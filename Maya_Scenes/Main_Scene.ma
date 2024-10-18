@@ -1,16 +1,18 @@
 //Maya ASCII 2023 scene
 //Name: Main_Scene.ma
-//Last modified: Wed, Oct 16, 2024 10:47:27 AM
+//Last modified: Fri, Oct 18, 2024 12:48:43 AM
 //Codeset: 1252
 requires "fbxmaya" "2020.3.1";
 file -rdi 1 -ns "Hermit_Crab_Rig_New" -rfn "Hermit_Crab_Rig_NewRN" -op "v=0;"
 		 -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/HermitCrab/Hermit_Crab_Rig_New.ma";
-file -rdi 1 -ns "uv_isle2" -rfn "uv_isle2RN1" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/uv isle2.obj";
 file -rdi 1 -ns "Palm_Tree" -rfn "Palm_TreeRN" -op "fbx" -typ "FBX export" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/PalmTree/Palm_Tree.fbx";
+file -rdi 1 -ns "island" -rfn "islandRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/island.obj";
+file -rdi 1 -ns "rocks" -rfn "rocksRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/rocks.obj";
 file -r -ns "Hermit_Crab_Rig_New" -dr 1 -rfn "Hermit_Crab_Rig_NewRN" -op "v=0;" 
 		-typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/HermitCrab/Hermit_Crab_Rig_New.ma";
-file -r -ns "uv_isle2" -dr 1 -rfn "uv_isle2RN1" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/uv isle2.obj";
 file -r -ns "Palm_Tree" -dr 1 -rfn "Palm_TreeRN" -op "fbx" -typ "FBX export" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/PalmTree/Palm_Tree.fbx";
+file -r -ns "island" -dr 1 -rfn "islandRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/island.obj";
+file -r -ns "rocks" -dr 1 -rfn "rocksRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/rocks.obj";
 requires maya "2023";
 requires -nodeType "RedshiftOptions" -nodeType "RedshiftPostEffects" "redshift4maya" "3.5.17";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.2.2.1";
@@ -20,20 +22,22 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202208031415-1dee56799d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "3F9D32B3-4877-950A-D96B-3989DAD241F0";
+fileInfo "UUID" "F811F509-4A1B-EFE6-599E-329E78E73283";
 createNode transform -s -n "persp";
 	rename -uid "06D20F71-4E11-86F7-2107-AAB30961FAE9";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 81.426621676851937 46.20284851039559 66.472384854335047 ;
-	setAttr ".r" -type "double3" -15.338352729478181 52.199999999999385 -3.8919702373799223e-15 ;
+	setAttr ".t" -type "double3" 69.210143279684317 46.273647430288193 173.90746156813745 ;
+	setAttr ".r" -type "double3" -3.6000000000000121 16.400000000000141 2.0721544026998792e-16 ;
+	setAttr ".rpt" -type "double3" 6.1211962946751479e-15 3.4751397871350543e-15 -3.1385637785535947e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "41EBD044-41EE-7229-94E9-8095322B51BB";
 	setAttr -k off ".v" no;
-	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 103.61310588371306;
+	setAttr ".fl" 34.999999999999979;
+	setAttr ".coi" 183.48580063653424;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
+	setAttr ".tp" -type "double3" -1.1605884756532332e-13 32.556186137430913 0 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "133DAFD4-4D37-30FE-4EAC-E88909AF99B0";
@@ -85,24 +89,22 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".hc" -type "string" "viewSet -s %camera";
 	setAttr ".o" yes;
 	setAttr ".ai_translator" -type "string" "orthographic";
-createNode transform -n "Island_Base";
-	rename -uid "08360F2A-4284-D959-73D8-C083B77DA966";
 createNode transform -n "Hermit_Crab";
 	rename -uid "5E67071D-49B9-D59C-72F5-BB893A68B9FC";
 	setAttr ".rp" -type "double3" 9.0982608795166016 12.73201847076416 -11.459846496582031 ;
 	setAttr ".sp" -type "double3" 9.0982608795166016 12.73201847076416 -11.459846496582031 ;
 createNode transform -n "Palm_Tree1";
 	rename -uid "CAAAAB35-427E-BAE0-E568-BE94F538A472";
-	setAttr ".t" -type "double3" 0 14.196452737705396 10.59687112971654 ;
-	setAttr ".s" -type "double3" 3.6821542034131842 3.6821542034131842 3.6821542034131842 ;
+	setAttr ".t" -type "double3" 55.23920255692255 8.2631846120104537 -0.71564883327611817 ;
+	setAttr ".s" -type "double3" 10.600302502924356 10.600302502924356 10.600302502924356 ;
 createNode fosterParent -n "Hermit_Crab_Rig_NewRNfosterParent1";
-	rename -uid "B5D2032D-45B5-9270-F2A6-148791A93D84";
+	rename -uid "F7AF937D-4F3E-0B52-632B-EAB144358EC6";
 createNode nurbsCurve -n "Transform_CtrlShapeDeformed" -p "Hermit_Crab_Rig_NewRNfosterParent1";
 	rename -uid "95B059B5-499A-87DD-D7A7-B8BD0D341601";
 	setAttr -k off ".v";
 	setAttr ".tw" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "37196CA0-431C-F867-E8F2-B38DA36816E5";
+	rename -uid "79621428-4B22-F2A2-6855-BEB512B8D29C";
 	setAttr -s 8 ".lnk";
 	setAttr -s 8 ".slnk";
 createNode RedshiftOptions -s -n "redshiftOptions";
@@ -131,22 +133,23 @@ createNode RedshiftPostEffects -n "defaultRedshiftPostEffects";
 	setAttr -s 2 ".cb[1]" -type "float2" 1 1;
 	setAttr -s 2 ".cl[1]" -type "float2" 1 1;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "F32EC146-4FEB-CA17-B09C-9187D44997D7";
+	rename -uid "D419CF59-44D5-264F-6B7C-77ABEE9214AF";
 	setAttr ".bsdt[0].bscd" -type "Int32Array" 1 0 ;
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "A3B7DCEA-4998-1498-5474-4D97E0B7730D";
+	rename -uid "4EDD0B8E-4B27-56F0-4839-FC9C58D93BE0";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "52FBF41D-461B-DE16-3131-5194F5CCE037";
+	rename -uid "84EA49A7-41EF-D7BD-C705-0B8161FD0188";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "70BB9F69-4A73-B45F-A011-0591A599AC2E";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "61F7B4EC-4DEC-14FD-DEEB-B6902E773A3A";
+	rename -uid "3A300EC0-4531-C0B1-8FD5-7DA259EC6FBA";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1FDAF10F-4F7C-048F-7755-2E870EE7590B";
 	setAttr ".g" yes;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "78E32408-46AF-DE67-2933-9E83D10B9E6A";
+	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "5.2.2.1";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "CB8FECD8-4F05-B6E8-03B4-11AD9E39999D";
@@ -222,7 +225,7 @@ createNode reference -n "Hermit_Crab_Rig_NewRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Hermit_Crab_Rig_NewRN"
 		"Hermit_Crab_Rig_NewRN" 0
-		"Hermit_Crab_Rig_NewRN" 10
+		"Hermit_Crab_Rig_NewRN" 11
 		0 "|Hermit_Crab_Rig_New:Crab_Asset" "|Hermit_Crab" "-s -r "
 		0 "|Hermit_Crab_Rig_NewRNfosterParent1|Transform_CtrlShapeDeformed" "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
 		"-s -r "
@@ -231,10 +234,12 @@ createNode reference -n "Hermit_Crab_Rig_NewRN";
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset" "scalePivot" " -type \"double3\" 9.09826087951660156 12.73201847076416016 -11.45984649658203125"
 		
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
-		"translate" " -type \"double3\" 9.09826049590915709 11.86548522483486501 -11.45984671976482794"
+		"translate" " -type \"double3\" 36.59157542852321399 15.87487782810593018 24.60250555832895003"
 		
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
-		"scale" " -type \"double3\" 0.5724360685213481 0.5724360685213481 0.5724360685213481"
+		"rotate" " -type \"double3\" 0 -22.5086644888919345 0"
+		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
+		"scale" " -type \"double3\" 2.37497886557084126 2.37497886557084126 2.37497886557084126"
 		
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl|Hermit_Crab_Rig_New:Transform_CtrlShape" 
 		"intermediateObject" " 1"
@@ -243,16 +248,6 @@ createNode reference -n "Hermit_Crab_Rig_NewRN";
 		2 "Hermit_Crab_Rig_New:defaultRedshiftPostEffects" "version" " 2"
 		5 3 "Hermit_Crab_Rig_NewRN" "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl|Hermit_Crab_Rig_New:Transform_CtrlShape.worldSpace" 
 		"Hermit_Crab_Rig_NewRN.placeHolderList[1]" "";
-	setAttr ".ptag" -type "string" "";
-lockNode -l 1 ;
-createNode reference -n "uv_isle2RN1";
-	rename -uid "7AD8C53E-4B2E-03EE-2FFE-288F934DF7F3";
-	setAttr ".ed" -type "dataReferenceEdits" 
-		"uv_isle2RN1"
-		"uv_isle2RN1" 0
-		"uv_isle2RN1" 2
-		0 "|uv_isle2:Mesh" "|Island_Base" "-s -r "
-		2 "|Island_Base|uv_isle2:Mesh" "visibility" " 1";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode reference -n "sharedReferenceNode";
@@ -319,6 +314,55 @@ createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
 	setAttr ".tgi[0].vl" -type "double2" -44.047617297323967 38.02264657273944 ;
 	setAttr ".tgi[0].vh" -type "double2" 1013.1532698454359 377.60838607920164 ;
+createNode reference -n "islandRN";
+	rename -uid "A649F23D-4AE7-AF4D-1E7A-2EA6F6A4CB8C";
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"islandRN"
+		"islandRN" 0
+		"islandRN" 3
+		2 "|island:Mesh" "visibility" " 1"
+		2 "|island:Mesh" "scale" " -type \"double3\" 1 1 1"
+		2 "|island:Mesh|island:MeshShape" "uvPivot" " -type \"double2\" 0 0";
+	setAttr ".ptag" -type "string" "";
+lockNode -l 1 ;
+createNode reference -n "rocksRN";
+	rename -uid "DF942EF1-4345-2A1A-09A2-F0A3B6C8131E";
+	setAttr -s 4 ".phl";
+	setAttr ".phl[1]" 0;
+	setAttr ".phl[2]" 0;
+	setAttr ".phl[3]" 0;
+	setAttr ".phl[4]" 0;
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"rocksRN"
+		"rocksRN" 0
+		"rocksRN" 8
+		2 "|rocks:Mesh|rocks:MeshShape" "instObjGroups.objectGroups" " -s 11"
+		2 "|rocks:Mesh|rocks:MeshShape" "instObjGroups.objectGroups[9].objectGrpCompList" 
+		" -type \"componentList\" 16 \"f[1498:4137]\" \"f[5636:8275]\" \"f[9774:11271]\" \"f[24832:27471]\" \"f[32140:42973]\" \"f[56004:57501]\" \"f[76784:85675]\" \"f[101346:102843]\" \"f[121154:123793]\" \"f[125292:126789]\" \"f[153380:156019]\" \"f[158660:161299]\" \"f[167466:170105]\" \"f[196696:205587]\" \"f[207086:215977]\" \"f[229538:231035]\""
+		
+		2 "|rocks:Mesh|rocks:MeshShape" "instObjGroups.objectGroups[10].objectGrpCompList" 
+		" -type \"componentList\" 1 \"f[167466:170105]\""
+		2 "|rocks:Mesh|rocks:MeshShape" "uvPivot" " -type \"double2\" 0.49217259883880615 0.49132850766181946"
+		
+		5 3 "rocksRN" "|rocks:Mesh|rocks:MeshShape.instObjGroups.objectGroups[9]" 
+		"rocksRN.placeHolderList[1]" ""
+		5 4 "rocksRN" "|rocks:Mesh|rocks:MeshShape.instObjGroups.objectGroups[9].objectGroupId" 
+		"rocksRN.placeHolderList[2]" ""
+		5 4 "rocksRN" "|rocks:Mesh|rocks:MeshShape.instObjGroups.objectGroups[9].objectGrpColor" 
+		"rocksRN.placeHolderList[3]" ""
+		5 4 "rocksRN" "|rocks:Mesh|rocks:MeshShape.instObjGroups.objectGroups[10].objectGroupId" 
+		"rocksRN.placeHolderList[4]" "";
+	setAttr ".ptag" -type "string" "";
+lockNode -l 1 ;
+createNode objectSet -n "rocks:MeshShapeHiddenFacesSet";
+	rename -uid "A2D01A0F-4C5D-26A8-8F05-4AB123E1882F";
+	setAttr ".ihi" 0;
+createNode groupId -n "groupId10";
+	rename -uid "A3C3EB0D-4381-8CD7-648A-36B69C5A254A";
+	setAttr ".ihi" 0;
+createNode groupId -n "groupId11";
+	rename -uid "4D8E0697-4780-3A2F-5753-E3A1DB71FC18";
+	setAttr ".ihi" 0;
 select -ne :time1;
 	setAttr ".o" 0;
 select -ne :hardwareRenderingGlobals;
@@ -341,15 +385,21 @@ select -ne :defaultRenderingList1;
 select -ne :defaultTextureList1;
 	setAttr -s 18 ".tx";
 select -ne :initialShadingGroup;
+	setAttr -s 2 ".dsm";
 	setAttr ".ro" yes;
 select -ne :initialParticleSE;
 	setAttr ".ro" yes;
 select -ne :defaultRenderGlobals;
 	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
 	setAttr ".ren" -type "string" "arnold";
+	setAttr ".outf" 51;
+	setAttr ".imfkey" -type "string" "exr";
 	setAttr ".dss" -type "string" "lambert1";
 select -ne :defaultResolution;
+	setAttr ".w" 1920;
+	setAttr ".h" 1080;
 	setAttr ".pa" 1;
+	setAttr ".dar" 1.7769999504089355;
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "C:/Program Files/Autodesk/Maya2023/resources/OCIO-configs/Maya2022-default/config.ocio";
@@ -362,7 +412,12 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :defaultHideFaceDataSet;
 connectAttr "Hermit_Crab_Rig_NewRN.phl[1]" "Transform_CtrlShapeDeformed.cr";
+connectAttr "rocksRN.phl[1]" "rocks:MeshShapeHiddenFacesSet.dsm" -na;
+connectAttr "groupId10.id" "rocksRN.phl[2]";
+connectAttr "rocks:MeshShapeHiddenFacesSet.mwc" "rocksRN.phl[3]";
+connectAttr "groupId11.id" "rocksRN.phl[4]";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "set1.message" ":defaultLightSet.message";
@@ -513,6 +568,7 @@ connectAttr "place2dTexture1.vc1" "file6.vc1";
 connectAttr "file1.oc" "multiplyDivide1.i1";
 connectAttr "set1.msg" "materialInfo1.sg";
 connectAttr "file5.oa" "bump2d1.bv";
+connectAttr "groupId10.msg" "rocks:MeshShapeHiddenFacesSet.gn" -na;
 connectAttr "set1.pa" ":renderPartition.st" -na;
 connectAttr "defaultRedshiftPostEffects.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
@@ -525,4 +581,7 @@ connectAttr "file3.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file4.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file5.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file6.msg" ":defaultTextureList1.tx" -na;
+connectAttr "rocks:MeshShapeHiddenFacesSet.msg" ":defaultHideFaceDataSet.dnsm" -na
+		;
+connectAttr "groupId11.msg" ":defaultLastHiddenSet.gn" -na;
 // End of Main_Scene.ma
