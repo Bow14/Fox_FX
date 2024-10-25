@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Main_Scene.ma
-//Last modified: Wed, Oct 23, 2024 11:43:12 AM
+//Last modified: Thu, Oct 24, 2024 07:29:22 PM
 //Codeset: 1252
 file -rdi 1 -ns "Hermit_Crab_Rig_New" -rfn "Hermit_Crab_Rig_NewRN" -op "v=0;"
 		 -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/HermitCrab/Hermit_Crab_Rig_New.ma";
@@ -17,7 +17,6 @@ requires -nodeType "RedshiftOptions" -nodeType "RedshiftPostEffects" "redshift4m
 requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiSkyDomeLight"
 		 "mtoa" "5.2.2.1";
-requires "fbxmaya" "2020.3.1";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -25,11 +24,11 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202208031415-1dee56799d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "5046B943-40AF-FE81-FD83-82BF17E21447";
+fileInfo "UUID" "1AC3F437-4B49-DC8B-44BD-42B3481037BD";
 createNode transform -s -n "persp";
 	rename -uid "06D20F71-4E11-86F7-2107-AAB30961FAE9";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 104.79195547995045 40.03232496850309 35.898938800149239 ;
+	setAttr ".t" -type "double3" 160.12019629178272 51.571278622565728 50.517290586006233 ;
 	setAttr ".r" -type "double3" -11.400000000000423 -284.79999999998222 -3.1127495590147175e-15 ;
 	setAttr ".rpt" -type "double3" -2.6382085024940071e-14 -3.6677993347191432e-14 3.6587019915827511e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
@@ -37,7 +36,7 @@ createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 84.912690679562033;
+	setAttr ".coi" 143.29126458898651;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -153,15 +152,15 @@ createNode aiSkyDomeLight -n "aiSkyDomeLightShape1" -p "aiSkyDomeLight1";
 	setAttr ".ai_color_temperature" 7760.27392578125;
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure"} ;
 createNode fosterParent -n "Hermit_Crab_Rig_NewRNfosterParent1";
-	rename -uid "A9D0F014-4F03-E749-EE2E-F79D6EA707E5";
+	rename -uid "B1DD44E9-4787-7FD0-24DA-45B0029E10FD";
 createNode nurbsCurve -n "Transform_CtrlShapeDeformed" -p "Hermit_Crab_Rig_NewRNfosterParent1";
 	rename -uid "95B059B5-499A-87DD-D7A7-B8BD0D341601";
 	setAttr -k off ".v";
 	setAttr ".tw" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "E158B8B1-4CDD-0E30-2467-C79E236E22C6";
-	setAttr -s 12 ".lnk";
-	setAttr -s 12 ".slnk";
+	rename -uid "50B952EC-47E3-A9B9-E2C6-D498D425B2AE";
+	setAttr -s 10 ".lnk";
+	setAttr -s 10 ".slnk";
 createNode RedshiftOptions -s -n "redshiftOptions";
 	rename -uid "31D3D8CF-4E5B-F7EB-4244-E38D8F274F42";
 	setAttr ".version" 6;
@@ -188,19 +187,19 @@ createNode RedshiftPostEffects -n "defaultRedshiftPostEffects";
 	setAttr -s 2 ".cb[1]" -type "float2" 1 1;
 	setAttr -s 2 ".cl[1]" -type "float2" 1 1;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "8637FCB3-4409-6C82-DA15-E78D385341E7";
+	rename -uid "FE4856AD-411C-2D3D-08CF-708C77C72F5B";
 	setAttr ".bsdt[0].bscd" -type "Int32Array" 2 0 1 ;
 	setAttr -s 2 ".bspr";
 	setAttr -s 2 ".obsv";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "DDE2E4AC-4D1F-766F-CF7E-1DA7F3F05EF5";
+	rename -uid "F9421443-419D-A20E-BDAA-DB990A791683";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "FBE84C1E-4C66-7D6D-328D-1E8AC66B6EC5";
+	rename -uid "BC83D47F-4FDB-D6AC-13C4-0BB60B04BE45";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "70BB9F69-4A73-B45F-A011-0591A599AC2E";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "F09FF05E-4A25-9D58-0466-A08ECAB457FB";
+	rename -uid "619BAED4-42C3-146B-79F0-F99A4A63373F";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1FDAF10F-4F7C-048F-7755-2E870EE7590B";
 	setAttr ".g" yes;
@@ -322,12 +321,14 @@ createNode reference -n "Palm_TreeRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Palm_TreeRN"
 		"Palm_TreeRN" 0
-		"Palm_TreeRN" 6
+		"Palm_TreeRN" 8
 		0 "|Palm_Tree:Whole_Trunk" "|Palm_Tree1" "-s -r "
 		0 "|Palm_Tree:Many_Leafs" "|Palm_Tree1" "-s -r "
 		2 "|Palm_Tree1|Palm_Tree:Whole_Trunk" "translate" " -type \"double3\" 0 0 0"
 		
 		2 "|Palm_Tree1|Palm_Tree:Whole_Trunk" "scale" " -type \"double3\" 1 1 1"
+		2 "Palm_Tree:defaultRedshiftPostEffects" "version" " 2"
+		2 "Palm_Tree:Main_Scene:defaultRedshiftPostEffects" "version" " 2"
 		2 "Palm_Tree:Leaves" "color" " -type \"float3\" 0 1 0"
 		2 "Palm_Tree:Leaves" "transparency" " -type \"float3\" 0 0 0";
 	setAttr ".ptag" -type "string" "";
@@ -444,6 +445,12 @@ createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
 	setAttr ".tgi[0].vl" -type "double2" -793.32168740770385 -3235.8157831507815 ;
 	setAttr ".tgi[0].vh" -type "double2" 19654.412691709967 3332.2443507476219 ;
+createNode file -n "file7";
+	rename -uid "3154E77E-408E-4DD2-67E3-60A00E6434C5";
+	setAttr ".ftn" -type "string" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//autumn_field_2k.hdr";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture2";
+	rename -uid "1425AFC5-4EBD-9CA6-AAE8-D18DC5CE9045";
 select -ne :time1;
 	setAttr ".o" 0;
 select -ne :hardwareRenderingGlobals;
@@ -460,12 +467,12 @@ select -ne :defaultShaderList1;
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderUtilityList1;
-	setAttr -s 19 ".u";
+	setAttr -s 20 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -s 5 ".r";
 select -ne :lightList1;
 select -ne :defaultTextureList1;
-	setAttr -s 24 ".tx";
+	setAttr -s 25 ".tx";
 select -ne :initialShadingGroup;
 	setAttr ".ro" yes;
 select -ne :initialParticleSE;
@@ -497,6 +504,7 @@ select -ne :hardwareRenderGlobals;
 select -ne :defaultHideFaceDataSet;
 	setAttr -s 2 ".dnsm";
 connectAttr "Hermit_Crab_Rig_NewRN.phl[1]" "Transform_CtrlShapeDeformed.cr";
+connectAttr "file7.oc" "aiSkyDomeLightShape1.sc";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "set1.message" ":defaultLightSet.message";
@@ -653,11 +661,34 @@ connectAttr "rocks:MeshShapeHiddenFacesSet.mwc" "rocksRN.phl[3]";
 connectAttr "groupId11.id" "rocksRN.phl[4]";
 connectAttr "rocksRN.phl[1]" "rocks:MeshShapeHiddenFacesSet.dsm" -na;
 connectAttr "groupId10.msg" "rocks:MeshShapeHiddenFacesSet.gn" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "file7.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file7.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file7.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file7.ws";
+connectAttr "place2dTexture2.c" "file7.c";
+connectAttr "place2dTexture2.tf" "file7.tf";
+connectAttr "place2dTexture2.rf" "file7.rf";
+connectAttr "place2dTexture2.mu" "file7.mu";
+connectAttr "place2dTexture2.mv" "file7.mv";
+connectAttr "place2dTexture2.s" "file7.s";
+connectAttr "place2dTexture2.wu" "file7.wu";
+connectAttr "place2dTexture2.wv" "file7.wv";
+connectAttr "place2dTexture2.re" "file7.re";
+connectAttr "place2dTexture2.of" "file7.of";
+connectAttr "place2dTexture2.r" "file7.ro";
+connectAttr "place2dTexture2.n" "file7.n";
+connectAttr "place2dTexture2.vt1" "file7.vt1";
+connectAttr "place2dTexture2.vt2" "file7.vt2";
+connectAttr "place2dTexture2.vt3" "file7.vt3";
+connectAttr "place2dTexture2.vc1" "file7.vc1";
+connectAttr "place2dTexture2.o" "file7.uv";
+connectAttr "place2dTexture2.ofs" "file7.fs";
 connectAttr "set1.pa" ":renderPartition.st" -na;
 connectAttr "defaultRedshiftPostEffects.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "multiplyDivide1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "bump2d1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "aiSkyDomeLightShape1.ltd" ":lightList1.l" -na;
 connectAttr "file1.msg" ":defaultTextureList1.tx" -na;
@@ -666,6 +697,7 @@ connectAttr "file3.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file4.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file5.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file6.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file7.msg" ":defaultTextureList1.tx" -na;
 connectAttr "aiSkyDomeLight1.iog" ":defaultLightSet.dsm" -na;
 connectAttr "rocks:MeshShapeHiddenFacesSet.msg" ":defaultHideFaceDataSet.dnsm" -na
 		;
