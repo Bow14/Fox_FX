@@ -1,43 +1,48 @@
 //Maya ASCII 2023 scene
 //Name: Main_Scene.ma
-//Last modified: Fri, Oct 18, 2024 12:48:43 AM
+//Last modified: Fri, Oct 25, 2024 09:45:46 PM
 //Codeset: 1252
-requires "fbxmaya" "2020.3.1";
 file -rdi 1 -ns "Hermit_Crab_Rig_New" -rfn "Hermit_Crab_Rig_NewRN" -op "v=0;"
 		 -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/HermitCrab/Hermit_Crab_Rig_New.ma";
-file -rdi 1 -ns "Palm_Tree" -rfn "Palm_TreeRN" -op "fbx" -typ "FBX export" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/PalmTree/Palm_Tree.fbx";
-file -rdi 1 -ns "island" -rfn "islandRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/island.obj";
-file -rdi 1 -ns "rocks" -rfn "rocksRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/rocks.obj";
+file -rdi 1 -ns "Palm_Tree" -rfn "Palm_TreeRN" -op "fbx" -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/PalmTree/Palm_Tree.ma";
+file -rdi 1 -ns "IslandTest2" -rfn "IslandTest2RN" -op "v=0;" -typ "mayaAscii"
+		 "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/Island.ma";
+file -rdi 1 -ns "Flag" -rfn "FlagRN" -op "v=0;" -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Flag/Flag.ma";
 file -r -ns "Hermit_Crab_Rig_New" -dr 1 -rfn "Hermit_Crab_Rig_NewRN" -op "v=0;" 
 		-typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/HermitCrab/Hermit_Crab_Rig_New.ma";
-file -r -ns "Palm_Tree" -dr 1 -rfn "Palm_TreeRN" -op "fbx" -typ "FBX export" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/PalmTree/Palm_Tree.fbx";
-file -r -ns "island" -dr 1 -rfn "islandRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/island.obj";
-file -r -ns "rocks" -dr 1 -rfn "rocksRN" -op "mo=1" -typ "OBJexport" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/rocks.obj";
+file -r -ns "Palm_Tree" -dr 1 -rfn "Palm_TreeRN" -op "fbx" -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/PalmTree/Palm_Tree.ma";
+file -r -ns "IslandTest2" -dr 1 -rfn "IslandTest2RN" -op "v=0;" -typ "mayaAscii"
+		 "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Island/Island.ma";
+file -r -ns "Flag" -dr 1 -rfn "FlagRN" -op "v=0;" -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/Flag/Flag.ma";
 requires maya "2023";
 requires -nodeType "RedshiftOptions" -nodeType "RedshiftPostEffects" "redshift4maya" "3.5.17";
-requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.2.2.1";
+requires "stereoCamera" "10.0";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiSkyDomeLight"
+		 "mtoa" "5.2.2.1";
+requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202208031415-1dee56799d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "F811F509-4A1B-EFE6-599E-329E78E73283";
+fileInfo "UUID" "08E927AF-4933-923B-0051-02BDECB36469";
 createNode transform -s -n "persp";
 	rename -uid "06D20F71-4E11-86F7-2107-AAB30961FAE9";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 69.210143279684317 46.273647430288193 173.90746156813745 ;
-	setAttr ".r" -type "double3" -3.6000000000000121 16.400000000000141 2.0721544026998792e-16 ;
-	setAttr ".rpt" -type "double3" 6.1211962946751479e-15 3.4751397871350543e-15 -3.1385637785535947e-15 ;
+	setAttr ".t" -type "double3" 200.73939505642036 83.020532548336007 79.495384302462583 ;
+	setAttr ".r" -type "double3" -16.80000000000063 -286.80000000002525 5.5020843988142889e-15 ;
+	setAttr ".rpt" -type "double3" -2.6382085024940071e-14 -3.6677993347191432e-14 3.6587019915827511e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "41EBD044-41EE-7229-94E9-8095322B51BB";
 	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 183.48580063653424;
+	setAttr ".coi" 200.81748347288482;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" -1.1605884756532332e-13 32.556186137430913 0 ;
+	setAttr ".tp" -type "double3" 29.577794677891507 12.736163945912843 -3.8984693795251228 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "133DAFD4-4D37-30FE-4EAC-E88909AF99B0";
@@ -91,22 +96,73 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".ai_translator" -type "string" "orthographic";
 createNode transform -n "Hermit_Crab";
 	rename -uid "5E67071D-49B9-D59C-72F5-BB893A68B9FC";
-	setAttr ".rp" -type "double3" 9.0982608795166016 12.73201847076416 -11.459846496582031 ;
-	setAttr ".sp" -type "double3" 9.0982608795166016 12.73201847076416 -11.459846496582031 ;
+	setAttr ".rp" -type "double3" 21.401550682864617 15.106723205055719 4.319188029093155 ;
+	setAttr ".sp" -type "double3" 21.401550682864617 15.106723205055719 4.319188029093155 ;
 createNode transform -n "Palm_Tree1";
 	rename -uid "CAAAAB35-427E-BAE0-E568-BE94F538A472";
-	setAttr ".t" -type "double3" 55.23920255692255 8.2631846120104537 -0.71564883327611817 ;
-	setAttr ".s" -type "double3" 10.600302502924356 10.600302502924356 10.600302502924356 ;
+	setAttr ".t" -type "double3" 5.8625357106901621 8.9277945387632389 23.018346034139249 ;
+	setAttr -l on ".tx";
+	setAttr -l on ".ty";
+	setAttr -l on ".tz";
+	setAttr ".r" -type "double3" 18.675911101651224 36.402949368105425 28.42759526865996 ;
+	setAttr -l on ".rx";
+	setAttr -l on ".ry";
+	setAttr -l on ".rz";
+	setAttr ".s" -type "double3" 7.378909395088848 4.9382655965210862 7.378909395088848 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+createNode transform -n "camera1";
+	rename -uid "52B77DF0-45BA-EEA5-64A9-CF831033877D";
+	setAttr ".t" -type "double3" 90.830298379205388 5.8793514877532163 28.119962038395109 ;
+	setAttr -l on ".tx";
+	setAttr -l on ".ty";
+	setAttr -l on ".tz";
+	setAttr ".r" -type "double3" 9.5996613398243582 73.200000000000287 0 ;
+	setAttr -l on ".rx";
+	setAttr -l on ".ry";
+	setAttr -l on ".rz";
+	setAttr ".s" -type "double3" 0.99999999999999978 1 1 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
+	setAttr ".rp" -type "double3" -1.9984014443252814e-15 3.5527136788005009e-15 5.6843418860808015e-14 ;
+	setAttr ".rpt" -type "double3" 5.5643283042337116e-14 -9.5291230097755138e-15 -3.8559577348548954e-14 ;
+	setAttr ".sp" -type "double3" -1.9984014443252818e-15 3.5527136788005009e-15 5.6843418860808015e-14 ;
+	setAttr ".spt" -type "double3" 3.9443045261050582e-31 0 0 ;
+createNode camera -n "cameraShape1" -p "camera1";
+	rename -uid "16368C6D-433C-082A-13E1-78BC08E18EA9";
+	setAttr -k off ".v";
+	setAttr ".cap" -type "double2" 1.4173 0.9449 ;
+	setAttr ".ff" 0;
+	setAttr ".coi" 115.41455009391508;
+	setAttr ".ow" 30;
+	setAttr ".imn" -type "string" "camera1";
+	setAttr ".den" -type "string" "camera1_depth";
+	setAttr ".man" -type "string" "camera1_mask";
+createNode transform -n "aiSkyDomeLight1";
+	rename -uid "97AB618A-436A-648B-71BF-40937F80ACF9";
+createNode aiSkyDomeLight -n "aiSkyDomeLightShape1" -p "aiSkyDomeLight1";
+	rename -uid "F5E8AE01-4177-27D9-16E3-C3848F7CA19C";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".intensity" 0.42105263471603394;
+	setAttr ".ai_exposure" 2.1378092765808105;
+	setAttr ".ai_use_color_temperature" yes;
+	setAttr ".ai_color_temperature" 7760.27392578125;
+	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure"} ;
 createNode fosterParent -n "Hermit_Crab_Rig_NewRNfosterParent1";
-	rename -uid "F7AF937D-4F3E-0B52-632B-EAB144358EC6";
+	rename -uid "07FFA4E4-41A1-8C26-6C00-51A21B9E19E7";
 createNode nurbsCurve -n "Transform_CtrlShapeDeformed" -p "Hermit_Crab_Rig_NewRNfosterParent1";
 	rename -uid "95B059B5-499A-87DD-D7A7-B8BD0D341601";
 	setAttr -k off ".v";
 	setAttr ".tw" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "79621428-4B22-F2A2-6855-BEB512B8D29C";
-	setAttr -s 8 ".lnk";
-	setAttr -s 8 ".slnk";
+	rename -uid "90E18EBC-4367-7707-884D-B3B0B734E8B7";
+	setAttr -s 11 ".lnk";
+	setAttr -s 11 ".slnk";
 createNode RedshiftOptions -s -n "redshiftOptions";
 	rename -uid "31D3D8CF-4E5B-F7EB-4244-E38D8F274F42";
 	setAttr ".version" 6;
@@ -133,17 +189,19 @@ createNode RedshiftPostEffects -n "defaultRedshiftPostEffects";
 	setAttr -s 2 ".cb[1]" -type "float2" 1 1;
 	setAttr -s 2 ".cl[1]" -type "float2" 1 1;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "D419CF59-44D5-264F-6B7C-77ABEE9214AF";
-	setAttr ".bsdt[0].bscd" -type "Int32Array" 1 0 ;
+	rename -uid "5A5D8B25-4E7F-98CE-08C9-5E8F9E1515E0";
+	setAttr ".bsdt[0].bscd" -type "Int32Array" 2 0 1 ;
+	setAttr -s 2 ".bspr";
+	setAttr -s 2 ".obsv";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "4EDD0B8E-4B27-56F0-4839-FC9C58D93BE0";
+	rename -uid "FF745CCA-4964-7DB8-1F24-DFB7C07AD5F7";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "84EA49A7-41EF-D7BD-C705-0B8161FD0188";
+	rename -uid "8AAF8DF0-4729-EC4B-B64A-34BC191E2B9B";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "70BB9F69-4A73-B45F-A011-0591A599AC2E";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "3A300EC0-4531-C0B1-8FD5-7DA259EC6FBA";
+	rename -uid "523D3D6E-4807-08CE-A3BA-38B5C8C807D7";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1FDAF10F-4F7C-048F-7755-2E870EE7590B";
 	setAttr ".g" yes;
@@ -198,8 +256,11 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
 		+ "\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
 		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n"
-		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n"
-		+ "        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n"
+		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n"
+		+ "                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n"
+		+ "                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n"
+		+ "                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
 		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1376\\n    -height 718\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1376\\n    -height 718\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
@@ -225,7 +286,7 @@ createNode reference -n "Hermit_Crab_Rig_NewRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Hermit_Crab_Rig_NewRN"
 		"Hermit_Crab_Rig_NewRN" 0
-		"Hermit_Crab_Rig_NewRN" 11
+		"Hermit_Crab_Rig_NewRN" 12
 		0 "|Hermit_Crab_Rig_New:Crab_Asset" "|Hermit_Crab" "-s -r "
 		0 "|Hermit_Crab_Rig_NewRNfosterParent1|Transform_CtrlShapeDeformed" "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
 		"-s -r "
@@ -234,18 +295,20 @@ createNode reference -n "Hermit_Crab_Rig_NewRN";
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset" "scalePivot" " -type \"double3\" 9.09826087951660156 12.73201847076416016 -11.45984649658203125"
 		
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
-		"translate" " -type \"double3\" 36.59157542852321399 15.87487782810593018 24.60250555832895003"
+		"translate" " -type \"double3\" 39.98770863697778566 13.17465157558891775 3.52685883173129922"
 		
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
-		"rotate" " -type \"double3\" 0 -22.5086644888919345 0"
+		"rotate" " -type \"double3\" -7.45598684180750126 -16.99525227115301007 -18.62494812230303864"
+		
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
-		"scale" " -type \"double3\" 2.37497886557084126 2.37497886557084126 2.37497886557084126"
+		"scale" " -type \"double3\" 0.7513273596373482 0.7513273596373482 0.7513273596373482"
 		
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl|Hermit_Crab_Rig_New:Transform_CtrlShape" 
 		"intermediateObject" " 1"
 		2 "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl|Hermit_Crab_Rig_New:Transform_CtrlShape" 
 		"inPlace" " 0"
 		2 "Hermit_Crab_Rig_New:defaultRedshiftPostEffects" "version" " 2"
+		2 "Hermit_Crab_Rig_New:Geo_Layer" "displayType" " 0"
 		5 3 "Hermit_Crab_Rig_NewRN" "|Hermit_Crab|Hermit_Crab_Rig_New:Crab_Asset|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl|Hermit_Crab_Rig_New:Transform_CtrlShape.worldSpace" 
 		"Hermit_Crab_Rig_NewRN.placeHolderList[1]" "";
 	setAttr ".ptag" -type "string" "";
@@ -256,13 +319,20 @@ createNode reference -n "sharedReferenceNode";
 		"sharedReferenceNode";
 createNode reference -n "Palm_TreeRN";
 	rename -uid "A642FB22-4F56-C3C3-5E38-4DB3FBBFB79D";
+	setAttr ".fn[0]" -type "string" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/PalmTree/Palm_Tree.fbx";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Palm_TreeRN"
 		"Palm_TreeRN" 0
-		"Palm_TreeRN" 3
+		"Palm_TreeRN" 8
 		0 "|Palm_Tree:Whole_Trunk" "|Palm_Tree1" "-s -r "
 		0 "|Palm_Tree:Many_Leafs" "|Palm_Tree1" "-s -r "
-		2 "|Palm_Tree1|Palm_Tree:Whole_Trunk" "translate" " -type \"double3\" 0 0 0";
+		2 "|Palm_Tree1|Palm_Tree:Whole_Trunk" "translate" " -type \"double3\" 0 0 0"
+		
+		2 "|Palm_Tree1|Palm_Tree:Whole_Trunk" "scale" " -type \"double3\" 1 1 1"
+		2 "Palm_Tree:defaultRedshiftPostEffects" "version" " 2"
+		2 "Palm_Tree:Main_Scene:defaultRedshiftPostEffects" "version" " 2"
+		2 "Palm_Tree:Leaves" "color" " -type \"float3\" 0 1 0"
+		2 "Palm_Tree:Leaves" "transparency" " -type \"float3\" 0 0 0";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode place2dTexture -n "place2dTexture1";
@@ -309,16 +379,10 @@ createNode bump2d -n "bump2d1";
 	setAttr ".bi" 1;
 	setAttr ".vc1" -type "float3" 0 9.9999997e-06 0 ;
 	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
-createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "66D21D6F-479A-D103-D27B-8CAF685CF9C4";
-	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -44.047617297323967 38.02264657273944 ;
-	setAttr ".tgi[0].vh" -type "double2" 1013.1532698454359 377.60838607920164 ;
 createNode reference -n "islandRN";
 	rename -uid "A649F23D-4AE7-AF4D-1E7A-2EA6F6A4CB8C";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"islandRN"
-		"islandRN" 0
 		"islandRN" 3
 		2 "|island:Mesh" "visibility" " 1"
 		2 "|island:Mesh" "scale" " -type \"double3\" 1 1 1"
@@ -329,12 +393,8 @@ createNode reference -n "rocksRN";
 	rename -uid "DF942EF1-4345-2A1A-09A2-F0A3B6C8131E";
 	setAttr -s 4 ".phl";
 	setAttr ".phl[1]" 0;
-	setAttr ".phl[2]" 0;
-	setAttr ".phl[3]" 0;
-	setAttr ".phl[4]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"rocksRN"
-		"rocksRN" 0
 		"rocksRN" 8
 		2 "|rocks:Mesh|rocks:MeshShape" "instObjGroups.objectGroups" " -s 11"
 		2 "|rocks:Mesh|rocks:MeshShape" "instObjGroups.objectGroups[9].objectGrpCompList" 
@@ -363,6 +423,47 @@ createNode groupId -n "groupId10";
 createNode groupId -n "groupId11";
 	rename -uid "4D8E0697-4780-3A2F-5753-E3A1DB71FC18";
 	setAttr ".ihi" 0;
+createNode reference -n "IslandTest2RN";
+	rename -uid "DB0CED4C-437E-CFDE-D89E-EA838C94C5EC";
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"IslandTest2RN"
+		"IslandTest2RN" 0
+		"IslandTest2RN" 5
+		2 "|IslandTest2:pPlane1" "scale" " -type \"double3\" 1 1 1"
+		2 "|IslandTest2:pPlane1" "rotatePivot" " -type \"double3\" -76.56135217507028301 3.36201499003031934 -37.52134988979886998"
+		
+		2 "|IslandTest2:pPlane1" "scalePivot" " -type \"double3\" -76.56135217507028301 3.36201499003031934 -37.52134988979886998"
+		
+		2 "|IslandTest2:pPlane1|IslandTest2:pPlaneShape1" "pt[0:120]" (" -s 121 -type \"float3\" -828.56226 3.362015 599.73254 -678.16205 3.362015 599.73254 -527.76196 3.362015 599.73254 -377.36169 3.362015 599.73254 -226.96155 3.362015 599.73254 -76.561371 3.362015 599.73254 73.838867 3.362015 599.73254 224.23901 3.362015 599.73254 374.63919 3.362015 599.73254 525.03943 3.362015 599.73254 675.43951 3.362015 599.73254 -828.56226 3.362015 472.28177 -678.16205 3.362015 472.28177 -527.76196 3.362015 472.28177 -377.36169 3.362015 472.28177 -226.96155 3.362015 472.28177 -76.561371 3.362015 472.28177 73.838867 3.362015 472.28177 224.23901 3.362015 472.28177 374.63919 3.362015 472.28177 525.03943 3.362015 472.28177 675.43951 3.362015 472.28177 -828.56226 3.362015 344.83099 -678.16205 3.362015 344.83099 -527.76196 3.362015 344.83099 -377.36169 3.362015 344.83099 -226.96155 3.362015 344.83099 -76.561371 3.362015 344.83099 73.838867 3.362015 344.83099 224.23901 3.362015 344.83099 374.63919 3.362015 344.83099 525.03943 3.362015 344.83099 675.43951 3.362015 344.83099 -828.56226 3.362015 217.38"
+		+ "02 -678.16205 3.362015 217.3802 -527.76196 3.362015 217.3802 -377.36169 3.362015 217.3802 -226.96155 3.362015 217.3802 -76.561371 3.362015 217.3802 73.838867 3.362015 217.3802 224.23901 3.362015 217.3802 374.63919 3.362015 217.3802 525.03943 3.362015 217.3802 675.43951 3.362015 217.3802 -828.56226 3.362015 89.929428 -678.16205 3.362015 89.929428 -527.76196 3.362015 89.929428 -377.36169 3.362015 89.929428 -226.96155 3.362015 89.929428 -76.561371 3.362015 89.929428 73.838867 3.362015 89.929428 224.23901 3.362015 89.929428 374.63919 3.362015 89.929428 525.03943 3.362015 89.929428 675.43951 3.362015 89.929428 -828.56226 3.362015 -37.521355 -678.16205 3.362015 -37.521355 -527.76196 3.362015 -37.521355 -377.36169 3.362015 -37.521355 -226.96155 3.362015 -37.521355 -76.561371 3.362015 -37.521355 73.838867 3.362015 -37.521355 224.23901 3.362015 -37.521355 374.63919 3.362015 -37.521355 525.03943 3.362015 -37.521355 675.43951 3.362015 -37.521355 -828.56226 3.362015 -164.97217 -678.16205 3.362015 -164.97217 -527.76196 3."
+		+ "362015 -164.97217 -377.36169 3.362015 -164.97217 -226.96155 3.362015 -164.97217 -76.561371 3.362015 -164.97217 73.838867 3.362015 -164.97217 224.23901 3.362015 -164.97217 374.63919 3.362015 -164.97217 525.03943 3.362015 -164.97217 675.43951 3.362015 -164.97217 -828.56226 3.362015 -292.42291 -678.16205 3.362015 -292.42291 -527.76196 3.362015 -292.42291 -377.36169 3.362015 -292.42291 -226.96155 3.362015 -292.42291 -76.561371 3.362015 -292.42291 73.838867 3.362015 -292.42291 224.23901 3.362015 -292.42291 374.63919 3.362015 -292.42291 525.03943 3.362015 -292.42291 675.43951 3.362015 -292.42291 -828.56226 3.362015 -419.87369 -678.16205 3.362015 -419.87369 -527.76196 3.362015 -419.87369 -377.36169 3.362015 -419.87369 -226.96155 3.362015 -419.87369 -76.561371 3.362015 -419.87369 73.838867 3.362015 -419.87369 224.23901 3.362015 -419.87369 374.63919 3.362015 -419.87369 525.03943 3.362015 -419.87369 675.43951 3.362015 -419.87369 -828.56226 3.362015 -547.32446 -678.16205 3.362015 -547.32446 -527.76196 3.362015 -547.3244"
+		+ "6 -377.36169 3.362015 -547.32446 -226.96155 3.362015 -547.32446 -76.561371 3.362015 -547.32446 73.838867 3.362015 -547.32446 224.23901 3.362015 -547.32446 374.63919 3.362015 -547.32446 525.03943 3.362015 -547.32446 675.43951 3.362015 -547.32446 -828.56226 3.362015 -674.77521 -678.16205 3.362015 -674.77521 -527.76196 3.362015 -674.77521 -377.36169 3.362015 -674.77521 -226.96155 3.362015 -674.77521 -76.561371 3.362015 -674.77521 73.838867 3.362015 -674.77521 224.23901 3.362015 -674.77521 374.63919 3.362015 -674.77521 525.03943 3.362015 -674.77521 675.43951 3.362015 -674.77521"
+		)
+		2 "IslandTest2:phong1" "transparency" " -type \"float3\" 0.51048952000000003 0.51048952000000003 0.51048952000000003";
+	setAttr ".ptag" -type "string" "";
+lockNode -l 1 ;
+createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
+	rename -uid "7DA88026-45CA-0B28-14FF-A5AB469B8906";
+	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
+	setAttr ".tgi[0].vl" -type "double2" -793.32168740770385 -3235.8157831507815 ;
+	setAttr ".tgi[0].vh" -type "double2" 19654.412691709967 3332.2443507476219 ;
+createNode file -n "file7";
+	rename -uid "3154E77E-408E-4DD2-67E3-60A00E6434C5";
+	setAttr ".ftn" -type "string" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//autumn_field_2k.hdr";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture2";
+	rename -uid "1425AFC5-4EBD-9CA6-AAE8-D18DC5CE9045";
+createNode reference -n "FlagRN";
+	rename -uid "0D1E2EE8-4019-67B3-2756-A7AE9AD22499";
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"FlagRN"
+		"FlagRN" 0
+		"FlagRN" 2
+		2 "|Flag:Flag" "translate" " -type \"double3\" 37.81792902943819712 16.13219212718814788 -32.38003556538365757"
+		
+		2 "|Flag:Flag" "scale" " -type \"double3\" 0.61933391864899945 0.61933391864899945 0.61933391864899945";
+	setAttr ".ptag" -type "string" "";
+lockNode -l 1 ;
 select -ne :time1;
 	setAttr ".o" 0;
 select -ne :hardwareRenderingGlobals;
@@ -372,18 +473,19 @@ select -ne :hardwareRenderingGlobals;
 		 0 0 0 0 ;
 	setAttr ".fprt" yes;
 select -ne :renderPartition;
-	setAttr -s 8 ".st";
+	setAttr -s 11 ".st";
 select -ne :renderGlobalsList1;
 select -ne :defaultShaderList1;
-	setAttr -s 10 ".s";
+	setAttr -s 12 ".s";
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderUtilityList1;
-	setAttr -s 14 ".u";
+	setAttr -s 21 ".u";
 select -ne :defaultRenderingList1;
-	setAttr -s 2 ".r";
+	setAttr -s 6 ".r";
+select -ne :lightList1;
 select -ne :defaultTextureList1;
-	setAttr -s 18 ".tx";
+	setAttr -s 25 ".tx";
 select -ne :initialShadingGroup;
 	setAttr -s 2 ".dsm";
 	setAttr ".ro" yes;
@@ -400,6 +502,7 @@ select -ne :defaultResolution;
 	setAttr ".h" 1080;
 	setAttr ".pa" 1;
 	setAttr ".dar" 1.7769999504089355;
+select -ne :defaultLightSet;
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "C:/Program Files/Autodesk/Maya2023/resources/OCIO-configs/Maya2022-default/config.ocio";
@@ -413,11 +516,9 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
 select -ne :defaultHideFaceDataSet;
+	setAttr -s 2 ".dnsm";
 connectAttr "Hermit_Crab_Rig_NewRN.phl[1]" "Transform_CtrlShapeDeformed.cr";
-connectAttr "rocksRN.phl[1]" "rocks:MeshShapeHiddenFacesSet.dsm" -na;
-connectAttr "groupId10.id" "rocksRN.phl[2]";
-connectAttr "rocks:MeshShapeHiddenFacesSet.mwc" "rocksRN.phl[3]";
-connectAttr "groupId11.id" "rocksRN.phl[4]";
+connectAttr "file7.oc" "aiSkyDomeLightShape1.sc";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "set1.message" ":defaultLightSet.message";
@@ -433,6 +534,7 @@ connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
 connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
 connectAttr "Hermit_Crab_Rig_NewRNfosterParent1.msg" "Hermit_Crab_Rig_NewRN.fp";
 connectAttr "sharedReferenceNode.sr" "Hermit_Crab_Rig_NewRN.sr";
+connectAttr "sharedReferenceNode.sr" "Palm_TreeRN.sr";
 connectAttr ":defaultColorMgtGlobals.cme" "file1.cme";
 connectAttr ":defaultColorMgtGlobals.cfe" "file1.cmcf";
 connectAttr ":defaultColorMgtGlobals.cfp" "file1.cmcp";
@@ -568,19 +670,49 @@ connectAttr "place2dTexture1.vc1" "file6.vc1";
 connectAttr "file1.oc" "multiplyDivide1.i1";
 connectAttr "set1.msg" "materialInfo1.sg";
 connectAttr "file5.oa" "bump2d1.bv";
+connectAttr "groupId10.id" "rocksRN.phl[2]";
+connectAttr "rocks:MeshShapeHiddenFacesSet.mwc" "rocksRN.phl[3]";
+connectAttr "groupId11.id" "rocksRN.phl[4]";
+connectAttr "rocksRN.phl[1]" "rocks:MeshShapeHiddenFacesSet.dsm" -na;
 connectAttr "groupId10.msg" "rocks:MeshShapeHiddenFacesSet.gn" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "file7.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file7.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file7.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file7.ws";
+connectAttr "place2dTexture2.c" "file7.c";
+connectAttr "place2dTexture2.tf" "file7.tf";
+connectAttr "place2dTexture2.rf" "file7.rf";
+connectAttr "place2dTexture2.mu" "file7.mu";
+connectAttr "place2dTexture2.mv" "file7.mv";
+connectAttr "place2dTexture2.s" "file7.s";
+connectAttr "place2dTexture2.wu" "file7.wu";
+connectAttr "place2dTexture2.wv" "file7.wv";
+connectAttr "place2dTexture2.re" "file7.re";
+connectAttr "place2dTexture2.of" "file7.of";
+connectAttr "place2dTexture2.r" "file7.ro";
+connectAttr "place2dTexture2.n" "file7.n";
+connectAttr "place2dTexture2.vt1" "file7.vt1";
+connectAttr "place2dTexture2.vt2" "file7.vt2";
+connectAttr "place2dTexture2.vt3" "file7.vt3";
+connectAttr "place2dTexture2.vc1" "file7.vc1";
+connectAttr "place2dTexture2.o" "file7.uv";
+connectAttr "place2dTexture2.ofs" "file7.fs";
 connectAttr "set1.pa" ":renderPartition.st" -na;
 connectAttr "defaultRedshiftPostEffects.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "multiplyDivide1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "bump2d1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
+connectAttr "aiSkyDomeLightShape1.ltd" ":lightList1.l" -na;
 connectAttr "file1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file2.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file3.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file4.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file5.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file6.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file7.msg" ":defaultTextureList1.tx" -na;
+connectAttr "aiSkyDomeLight1.iog" ":defaultLightSet.dsm" -na;
 connectAttr "rocks:MeshShapeHiddenFacesSet.msg" ":defaultHideFaceDataSet.dnsm" -na
 		;
 connectAttr "groupId11.msg" ":defaultLastHiddenSet.gn" -na;
