@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Anim_1.ma
-//Last modified: Tue, Oct 29, 2024 06:43:31 PM
+//Last modified: Tue, Oct 29, 2024 06:56:49 PM
 //Codeset: 1252
 file -rdi 1 -ns "Main_Scene" -rfn "Main_SceneRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/redpa/OneDrive/Documents/git/Fox_FX/Maya_Scenes/Main_Scene.ma";
@@ -16,7 +16,8 @@ file -r -ns "Main_Scene" -dr 1 -rfn "Main_SceneRN" -op "v=0;" -typ "mayaAscii" "
 requires maya "2023";
 requires -dataType "ngst2SkinLayerDataStorage" "ngSkinTools2" "2.1.3";
 requires "stereoCamera" "10.0";
-requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.2.1.1";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiStandardSurface"
+		 "mtoa" "5.2.1.1";
 requires "stereoCamera" "10.0";
 requires -nodeType "RedshiftOptions" -nodeType "RedshiftPostEffects" "redshift4maya" "3.5.17";
 currentUnit -l centimeter -a degree -t film;
@@ -25,7 +26,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202211021031-847a9f9623";
 fileInfo "osv" "Windows 10 Home v2009 (Build: 19045)";
-fileInfo "UUID" "05923BA7-4453-6E94-81BA-B591DDD425F8";
+fileInfo "UUID" "89D27BB9-43FB-E8FA-A54D-8A9D878651BA";
 createNode transform -s -n "rocks:persp";
 	rename -uid "06D20F71-4E11-86F7-2107-AAB30961FAE9";
 	setAttr ".v" no;
@@ -195,8 +196,8 @@ createNode mesh -n "WAVEShape" -p "WAVE";
 	setAttr ".cdvm[0]"  0 1 1;
 createNode lightLinker -s -n "rocks:lightLinker1";
 	rename -uid "B756EF3A-4406-6470-71C5-27A677954593";
-	setAttr -s 14 ".lnk";
-	setAttr -s 14 ".slnk";
+	setAttr -s 17 ".lnk";
+	setAttr -s 17 ".slnk";
 createNode RedshiftOptions -s -n "rocks:redshiftOptions";
 	rename -uid "31D3D8CF-4E5B-F7EB-4244-E38D8F274F42";
 	setAttr ".version" 6;
@@ -269,7 +270,7 @@ createNode script -n "rocks:uiConfigurationScriptNode";
 		+ "            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|Main_Scene:camera1\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n"
 		+ "            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n"
 		+ "            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n"
-		+ "            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1564\n            -height 732\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n"
+		+ "            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 515\n            -height 452\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n"
 		+ "\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n"
 		+ "            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -selectCommand \"print(\\\"\\\")\" \n            -showNamespace 1\n            -showPinIcons 0\n"
 		+ "            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n"
@@ -294,10 +295,12 @@ createNode script -n "rocks:uiConfigurationScriptNode";
 		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n"
 		+ "                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n"
 		+ "                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n"
-		+ "                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n"
-		+ "        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|Main_Scene:camera1\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1564\\n    -height 732\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|Main_Scene:camera1\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1564\\n    -height 732\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n"
+		+ "            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n"
+		+ "            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|Main_Scene:camera1\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 515\\n    -height 452\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|Main_Scene:camera1\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 515\\n    -height 452\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "rocks:sceneConfigurationScriptNode";
@@ -416,11 +419,15 @@ createNode groupId -n "rocks:groupId11";
 	setAttr ".ihi" 0;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "AE864156-466B-BEF2-EF68-4EB248055F74";
+	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "5.2.1.1";
+	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=Main_Scene:cameraShape1;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "E93F7067-47A1-43D9-1DB7-DCBFED04D655";
+	setAttr ".ai_translator" -type "string" "gaussian";
 createNode aiAOVDriver -s -n "defaultArnoldDriver";
 	rename -uid "A831D3EA-4842-E0C4-7897-BCB980B00F92";
+	setAttr ".ai_translator" -type "string" "exr";
 createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
 	rename -uid "B27A66ED-4295-AF5F-3A7B-F3BC841778E9";
 	setAttr ".output_mode" 0;
@@ -445,7 +452,7 @@ createNode RedshiftOptions -s -n "redshiftOptions";
 	setAttr ".enableAutomaticSampling" 1;
 createNode reference -n "Main_SceneRN";
 	rename -uid "C5B3474A-401D-4FB1-0F80-3CA15A39DDD1";
-	setAttr -s 61 ".phl";
+	setAttr -s 75 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -507,6 +514,20 @@ createNode reference -n "Main_SceneRN";
 	setAttr ".phl[59]" 0;
 	setAttr ".phl[60]" 0;
 	setAttr ".phl[61]" 0;
+	setAttr ".phl[62]" 0;
+	setAttr ".phl[63]" 0;
+	setAttr ".phl[64]" 0;
+	setAttr ".phl[65]" 0;
+	setAttr ".phl[66]" 0;
+	setAttr ".phl[67]" 0;
+	setAttr ".phl[68]" 0;
+	setAttr ".phl[69]" 0;
+	setAttr ".phl[70]" 0;
+	setAttr ".phl[71]" 0;
+	setAttr ".phl[72]" 0;
+	setAttr ".phl[73]" 0;
+	setAttr ".phl[74]" 0;
+	setAttr ".phl[75]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Main_SceneRN"
 		"Main_Scene:IslandTest2RN" 0
@@ -534,8 +555,8 @@ createNode reference -n "Main_SceneRN";
 		"Main_Scene:FlagRN" 0
 		"Main_Scene:IslandTest2RN" 1
 		5 3 "Main_SceneRN" "|Main_Scene:IslandTest2:island:Mesh|Main_Scene:IslandTest2:island:MeshShape.instObjGroups" 
-		"Main_SceneRN.placeHolderList[51]" ""
-		"Main_Scene:Hermit_Crab_Rig_NewRN" 54
+		"Main_SceneRN.placeHolderList[65]" ""
+		"Main_Scene:Hermit_Crab_Rig_NewRN" 93
 		2 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Shell_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Shell_Ctrl" 
 		"rotate" " -type \"double3\" 0 0 0"
 		2 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Legs_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_01_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_01_Jnt_01_Ctrl" 
@@ -545,106 +566,195 @@ createNode reference -n "Main_SceneRN";
 		"translate" " -type \"double3\" 0 0 0"
 		2 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_05_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_05_Ctrl" 
 		"rotate" " -type \"double3\" 0 0 -12.83203371027273398"
+		2 "Main_Scene:Hermit_Crab_Rig_New:file29" "fileTextureName" " -type \"string\" \"C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Normal_DirectX.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file26" "fileTextureName" " -type \"string\" \"C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Base_color.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file24" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabEyes/CrabEyes_Normal_DirectX.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file21" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabEyes/CrabEyes_Base_color.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file19" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabBody/CrabBody_Normal_DirectX.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file16" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabBody/CrabBody_Base_color.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file30" "fileTextureName" " -type \"string\" \"C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Roughness.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file28" "fileTextureName" " -type \"string\" \"C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Metallic.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file25" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabEyes/CrabEyes_Roughness.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file23" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabEyes/CrabEyes_Metallic.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file20" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabBody/CrabBody_Roughness.png\""
+		
+		2 "Main_Scene:Hermit_Crab_Rig_New:file18" "fileTextureName" " -type \"string\" \"C:/Users/Melia/Desktop/Fox_FX/Models/Hermit_crab/Textures/CrabBody/CrabBody_Metallic.png\""
+		
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Stalk|Main_Scene:Hermit_Crab_Rig_New:L_Eye_StalkShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Stalk|Main_Scene:Hermit_Crab_Rig_New:R_Eye_StalkShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Leg_02_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_02_LPShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Leg_03_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_03_LPShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Leg_01_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_01_LPShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_01_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Leg_01_LPShape1.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Claw_LP|Main_Scene:Hermit_Crab_Rig_New:R_Claw_LPShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_03_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Leg_03_LPShape1.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_02_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Leg_02_LPShape1.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Claw_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Claw_LP1Shape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:Body_LP1|Main_Scene:Hermit_Crab_Rig_New:Body_LP1Shape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye|Main_Scene:Hermit_Crab_Rig_New:R_EyeShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:set5.dagSetMembers" "-na"
+		3 "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye|Main_Scene:Hermit_Crab_Rig_New:L_EyeShape.instObjGroups" 
+		"Main_Scene:Hermit_Crab_Rig_New:set5.dagSetMembers" "-na"
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:Body_LP1|Main_Scene:Hermit_Crab_Rig_New:Body_LP1Shape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[1]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Claw_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Claw_LP1Shape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[2]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Claw_LP|Main_Scene:Hermit_Crab_Rig_New:R_Claw_LPShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[3]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_01_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Leg_01_LPShape1.instObjGroups" 
+		"Main_SceneRN.placeHolderList[4]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_02_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Leg_02_LPShape1.instObjGroups" 
+		"Main_SceneRN.placeHolderList[5]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Leg_03_LP1|Main_Scene:Hermit_Crab_Rig_New:L_Leg_03_LPShape1.instObjGroups" 
+		"Main_SceneRN.placeHolderList[6]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Leg_01_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_01_LPShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[7]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Leg_02_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_02_LPShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[8]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Leg_03_LP|Main_Scene:Hermit_Crab_Rig_New:R_Leg_03_LPShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[9]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye|Main_Scene:Hermit_Crab_Rig_New:L_EyeShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[10]" "Main_Scene:Hermit_Crab_Rig_New:set5.dsm"
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Stalk|Main_Scene:Hermit_Crab_Rig_New:L_Eye_StalkShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[11]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Stalk|Main_Scene:Hermit_Crab_Rig_New:R_Eye_StalkShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[12]" "Main_Scene:Hermit_Crab_Rig_New:Crab_Body1SG.dsm"
+		
+		5 3 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Geo_LP|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye|Main_Scene:Hermit_Crab_Rig_New:R_EyeShape.instObjGroups" 
+		"Main_SceneRN.placeHolderList[13]" "Main_Scene:Hermit_Crab_Rig_New:set5.dsm"
 		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.translateX" 
-		"Main_SceneRN.placeHolderList[1]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.translateY" 
-		"Main_SceneRN.placeHolderList[2]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.translateZ" 
-		"Main_SceneRN.placeHolderList[3]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.rotateX" 
-		"Main_SceneRN.placeHolderList[4]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.rotateY" 
-		"Main_SceneRN.placeHolderList[5]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.rotateZ" 
-		"Main_SceneRN.placeHolderList[6]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.scaleX" 
-		"Main_SceneRN.placeHolderList[7]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.scaleY" 
-		"Main_SceneRN.placeHolderList[8]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.scaleZ" 
-		"Main_SceneRN.placeHolderList[9]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.visibility" 
-		"Main_SceneRN.placeHolderList[10]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.translateX" 
-		"Main_SceneRN.placeHolderList[11]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.translateY" 
-		"Main_SceneRN.placeHolderList[12]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.translateZ" 
-		"Main_SceneRN.placeHolderList[13]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.rotateY" 
 		"Main_SceneRN.placeHolderList[14]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.rotateX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.translateY" 
 		"Main_SceneRN.placeHolderList[15]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.rotateZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.translateZ" 
 		"Main_SceneRN.placeHolderList[16]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.scaleX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.rotateX" 
 		"Main_SceneRN.placeHolderList[17]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.scaleY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.rotateY" 
 		"Main_SceneRN.placeHolderList[18]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.scaleZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.rotateZ" 
 		"Main_SceneRN.placeHolderList[19]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.visibility" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.scaleX" 
 		"Main_SceneRN.placeHolderList[20]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.translateX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.scaleY" 
 		"Main_SceneRN.placeHolderList[21]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.translateY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.scaleZ" 
 		"Main_SceneRN.placeHolderList[22]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.translateZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:Transform_Ctrl.visibility" 
 		"Main_SceneRN.placeHolderList[23]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.rotateY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.translateX" 
 		"Main_SceneRN.placeHolderList[24]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.rotateX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.translateY" 
 		"Main_SceneRN.placeHolderList[25]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.rotateZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.translateZ" 
 		"Main_SceneRN.placeHolderList[26]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.scaleX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.rotateY" 
 		"Main_SceneRN.placeHolderList[27]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.scaleY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.rotateX" 
 		"Main_SceneRN.placeHolderList[28]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.scaleZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.rotateZ" 
 		"Main_SceneRN.placeHolderList[29]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.visibility" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.scaleX" 
 		"Main_SceneRN.placeHolderList[30]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.translateX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.scaleY" 
 		"Main_SceneRN.placeHolderList[31]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.translateY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.scaleZ" 
 		"Main_SceneRN.placeHolderList[32]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.translateZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Eye_Jnt_01_Ctrl.visibility" 
 		"Main_SceneRN.placeHolderList[33]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.rotateY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.translateX" 
 		"Main_SceneRN.placeHolderList[34]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.rotateX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.translateY" 
 		"Main_SceneRN.placeHolderList[35]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.rotateZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.translateZ" 
 		"Main_SceneRN.placeHolderList[36]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.scaleX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.rotateY" 
 		"Main_SceneRN.placeHolderList[37]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.scaleY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.rotateX" 
 		"Main_SceneRN.placeHolderList[38]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.scaleZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.rotateZ" 
 		"Main_SceneRN.placeHolderList[39]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.visibility" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.scaleX" 
 		"Main_SceneRN.placeHolderList[40]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.translateX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.scaleY" 
 		"Main_SceneRN.placeHolderList[41]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.translateY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.scaleZ" 
 		"Main_SceneRN.placeHolderList[42]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.translateZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Eyes_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:R_Eye_Jnt_01_Ctrl.visibility" 
 		"Main_SceneRN.placeHolderList[43]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.rotateZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.translateX" 
 		"Main_SceneRN.placeHolderList[44]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.rotateX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.translateY" 
 		"Main_SceneRN.placeHolderList[45]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.rotateY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.translateZ" 
 		"Main_SceneRN.placeHolderList[46]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.scaleX" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.rotateY" 
 		"Main_SceneRN.placeHolderList[47]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.scaleY" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.rotateX" 
 		"Main_SceneRN.placeHolderList[48]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.scaleZ" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.rotateZ" 
 		"Main_SceneRN.placeHolderList[49]" ""
-		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.visibility" 
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.scaleX" 
 		"Main_SceneRN.placeHolderList[50]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.scaleY" 
+		"Main_SceneRN.placeHolderList[51]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.scaleZ" 
+		"Main_SceneRN.placeHolderList[52]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Jnt_Ctrl.visibility" 
+		"Main_SceneRN.placeHolderList[53]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.translateX" 
+		"Main_SceneRN.placeHolderList[54]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.translateY" 
+		"Main_SceneRN.placeHolderList[55]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.translateZ" 
+		"Main_SceneRN.placeHolderList[56]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.rotateZ" 
+		"Main_SceneRN.placeHolderList[57]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.rotateX" 
+		"Main_SceneRN.placeHolderList[58]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.rotateY" 
+		"Main_SceneRN.placeHolderList[59]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.scaleX" 
+		"Main_SceneRN.placeHolderList[60]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.scaleY" 
+		"Main_SceneRN.placeHolderList[61]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.scaleZ" 
+		"Main_SceneRN.placeHolderList[62]" ""
+		5 4 "Main_SceneRN" "|Main_Scene:Hermit_Crab|Main_Scene:Hermit_Crab_Rig_New:Crab_Asset|Main_Scene:Hermit_Crab_Rig_New:Controls|Main_Scene:Hermit_Crab_Rig_New:Claws_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl_Grp|Main_Scene:Hermit_Crab_Rig_New:L_Claw_Top_Jnt_01_Ctrl.visibility" 
+		"Main_SceneRN.placeHolderList[63]" ""
+		5 3 "Main_SceneRN" "Main_Scene:Hermit_Crab_Rig_New:Crab_Shell1.message" 
+		"Main_SceneRN.placeHolderList[64]" ""
 		"Main_SceneRN" 19
 		2 "|Main_Scene:camera1" "translateX" " 90.83029837920538796"
 		2 "|Main_Scene:camera1" "translateY" " 5.87935148775321625"
@@ -671,25 +781,25 @@ createNode reference -n "Main_SceneRN";
 		"Main_Scene:FlagRN" 11
 		2 "|Main_Scene:Flag:Flag|Main_Scene:Flag:Flag_Banner" "translate" " -type \"double3\" 5.10132307718631495 7.52335131472940333 0"
 		
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.translateX" "Main_SceneRN.placeHolderList[52]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.translateX" "Main_SceneRN.placeHolderList[66]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.translateZ" "Main_SceneRN.placeHolderList[53]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.translateZ" "Main_SceneRN.placeHolderList[67]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.translateY" "Main_SceneRN.placeHolderList[54]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.translateY" "Main_SceneRN.placeHolderList[68]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.rotateX" "Main_SceneRN.placeHolderList[55]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.rotateX" "Main_SceneRN.placeHolderList[69]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.rotateY" "Main_SceneRN.placeHolderList[56]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.rotateY" "Main_SceneRN.placeHolderList[70]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.rotateZ" "Main_SceneRN.placeHolderList[57]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.rotateZ" "Main_SceneRN.placeHolderList[71]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.scaleX" "Main_SceneRN.placeHolderList[58]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.scaleX" "Main_SceneRN.placeHolderList[72]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.scaleY" "Main_SceneRN.placeHolderList[59]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.scaleY" "Main_SceneRN.placeHolderList[73]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.scaleZ" "Main_SceneRN.placeHolderList[60]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.scaleZ" "Main_SceneRN.placeHolderList[74]" 
 		""
-		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.visibility" "Main_SceneRN.placeHolderList[61]" 
+		5 4 "Main_SceneRN" "|Main_Scene:Flag:Flag.visibility" "Main_SceneRN.placeHolderList[75]" 
 		"";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
@@ -1252,29 +1362,290 @@ createNode shadingEngine -n "lambert3SG";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo2";
 	rename -uid "1B8D58ED-4CA8-F427-8D42-6AA06BEF415B";
+createNode place2dTexture -n "place2dTexture1";
+	rename -uid "50620B84-441D-9E0C-BED0-F589A0FE0067";
+createNode file -n "file1";
+	rename -uid "45F49CBE-4E5C-2003-0F90-269231D4FFEA";
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabBody/CrabBody_Base_color.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode file -n "file2";
+	rename -uid "47E7750E-4468-15EF-580A-1C9BEDC5BE38";
+	setAttr ".ail" yes;
+	setAttr ".ao" -0.5;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabBody/CrabBody_Height.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file3";
+	rename -uid "B77DA129-46A4-0163-8FE2-7385CEB4617E";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabBody/CrabBody_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file4";
+	rename -uid "16063AFC-4DB7-11A7-6146-FDABD306B5F5";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabBody/CrabBody_Normal_DirectX.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file5";
+	rename -uid "A795B37C-4DCA-E2E0-7FE6-608FC31A73DE";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabBody/CrabBody_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode multiplyDivide -n "multiplyDivide1";
+	rename -uid "75DF7722-4939-6D63-55A7-6999014B2CB0";
+createNode aiStandardSurface -n "aiStandardSurface1";
+	rename -uid "E750A740-44B7-5968-8331-60A7CA6EA1F3";
+	setAttr ".emission" 1;
+	setAttr ".emission_color" -type "float3" 0 0 0 ;
+createNode shadingEngine -n "set1";
+	rename -uid "898133BE-45DE-2C24-515B-EFB37CC0E389";
+	setAttr ".ihi" 0;
+	setAttr -s 11 ".dsm";
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo3";
+	rename -uid "22D25F95-473D-824B-4F86-8BA64E0BC37D";
+createNode displacementShader -n "displacementShader1";
+	rename -uid "E20B1B38-4D4A-10A9-C707-5A9F05435423";
+createNode bump2d -n "bump2d1";
+	rename -uid "9D48C39B-4699-F10A-7AC7-6B89692E7517";
+	setAttr ".bi" 1;
+	setAttr ".vc1" -type "float3" 0 9.9999997e-06 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode place2dTexture -n "place2dTexture2";
+	rename -uid "84AE4F0D-4767-ABF0-D65F-27A53B81D6AA";
+createNode file -n "file6";
+	rename -uid "F5B911FD-4E4E-8152-8CC7-F986A3515895";
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabEyes/CrabEyes_Base_color.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode file -n "file7";
+	rename -uid "099F8B54-4A69-F975-5DB5-0F927D634906";
+	setAttr ".ail" yes;
+	setAttr ".ao" -0.5;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabEyes/CrabEyes_Height.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file8";
+	rename -uid "2E1DEC1F-4A76-A6C3-424A-B3BEF402FDAC";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabEyes/CrabEyes_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file9";
+	rename -uid "4378E653-4D9E-ABE7-DF7C-4B845F999285";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabEyes/CrabEyes_Normal_DirectX.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file10";
+	rename -uid "4B45F0EF-4E83-3636-871E-E4B8688129A1";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabEyes/CrabEyes_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode multiplyDivide -n "multiplyDivide2";
+	rename -uid "BB2E875F-497F-4368-8BDE-318B388925E9";
+createNode aiStandardSurface -n "aiStandardSurface2";
+	rename -uid "931E59CE-4FEE-DFC4-8249-DC86D6306836";
+	setAttr ".emission" 1;
+	setAttr ".emission_color" -type "float3" 0 0 0 ;
+createNode shadingEngine -n "set2";
+	rename -uid "39FC9A9C-4D0C-3D1A-A184-59843AF8B093";
+	setAttr ".ihi" 0;
+	setAttr -s 2 ".dsm";
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo4";
+	rename -uid "DFACD767-49A1-87A7-2C28-DF92D173D31C";
+createNode displacementShader -n "displacementShader2";
+	rename -uid "78BCC31E-411D-2990-5E87-A9B81A5BD791";
+createNode bump2d -n "bump2d2";
+	rename -uid "DC1F8001-459A-56CF-FF68-22B9AD1DF6A0";
+	setAttr ".bi" 1;
+	setAttr ".vc1" -type "float3" 0 9.9999997e-06 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode place2dTexture -n "place2dTexture3";
+	rename -uid "8AF25D1A-4834-481C-D5A4-67A68AA87C2D";
+createNode file -n "file11";
+	rename -uid "E5F75F98-442A-2001-2F98-B380441308A0";
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Base_color.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode file -n "file12";
+	rename -uid "82684CC5-43B9-E6E3-364D-B68BB50B5E7C";
+	setAttr ".ail" yes;
+	setAttr ".ao" -0.5;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Height.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file13";
+	rename -uid "559784DA-46EE-A7A5-661B-1AAD890B8CCE";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file14";
+	rename -uid "ED0BB4A9-41C4-24AA-ECA3-6CA9460865E3";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Normal_DirectX.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file15";
+	rename -uid "C4A08660-4826-F43F-61CC-A1941F59B86A";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/redpa/Downloads/Crab_Textures_2/Crab_Textures_2/CrabShell/CrabShell_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode multiplyDivide -n "multiplyDivide3";
+	rename -uid "E4745094-4F64-FEFF-4DE7-658C1E110A82";
+createNode aiStandardSurface -n "aiStandardSurface3";
+	rename -uid "132FA176-4CC9-D37C-5DC3-06895F63726D";
+	setAttr ".emission" 1;
+	setAttr ".emission_color" -type "float3" 0 0 0 ;
+createNode shadingEngine -n "set3";
+	rename -uid "DEC255F8-4B3B-5E3A-CC1B-23B75DEA7B45";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo5";
+	rename -uid "21696648-46C4-4486-EBE1-F1B109647DDE";
+createNode displacementShader -n "displacementShader3";
+	rename -uid "34789AC9-4A07-890E-4A22-37A9918DD34D";
+createNode bump2d -n "bump2d3";
+	rename -uid "BDE617DA-4FBB-ED18-0E1B-48BBA1679D6B";
+	setAttr ".bi" 1;
+	setAttr ".vc1" -type "float3" 0 9.9999997e-06 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
+	rename -uid "9143BF80-47B1-6C19-6D89-8B9D68A05852";
+	setAttr -s 2 ".tgi";
+	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
+	setAttr ".tgi[0].vl" -type "double2" -2231.1994889441862 -1505.7630108461919 ;
+	setAttr ".tgi[0].vh" -type "double2" 1964.3005793818008 777.18164912573332 ;
+	setAttr -s 33 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" -620;
+	setAttr ".tgi[0].ni[0].y" 87.142860412597656;
+	setAttr ".tgi[0].ni[0].nvs" 1923;
+	setAttr ".tgi[0].ni[1].x" -312.85714721679688;
+	setAttr ".tgi[0].ni[1].y" 288.57144165039062;
+	setAttr ".tgi[0].ni[1].nvs" 1923;
+	setAttr ".tgi[0].ni[2].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[2].y" 431.42855834960938;
+	setAttr ".tgi[0].ni[2].nvs" 1923;
+	setAttr ".tgi[0].ni[3].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[3].y" 80;
+	setAttr ".tgi[0].ni[3].nvs" 1923;
+	setAttr ".tgi[0].ni[4].x" 670;
+	setAttr ".tgi[0].ni[4].y" 344.28570556640625;
+	setAttr ".tgi[0].ni[4].nvs" 1923;
+	setAttr ".tgi[0].ni[5].x" 321.42855834960938;
+	setAttr ".tgi[0].ni[5].y" 234.28572082519531;
+	setAttr ".tgi[0].ni[5].nvs" 2387;
+	setAttr ".tgi[0].ni[6].x" 321.42855834960938;
+	setAttr ".tgi[0].ni[6].y" 410;
+	setAttr ".tgi[0].ni[6].nvs" 1923;
+	setAttr ".tgi[0].ni[7].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[7].y" -95.714286804199219;
+	setAttr ".tgi[0].ni[7].nvs" 1923;
+	setAttr ".tgi[0].ni[8].x" -311.42855834960938;
+	setAttr ".tgi[0].ni[8].y" -1.4285714626312256;
+	setAttr ".tgi[0].ni[8].nvs" 1923;
+	setAttr ".tgi[0].ni[9].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[9].y" -248.57142639160156;
+	setAttr ".tgi[0].ni[9].nvs" 1923;
+	setAttr ".tgi[0].ni[10].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[10].y" 431.42855834960938;
+	setAttr ".tgi[0].ni[10].nvs" 1923;
+	setAttr ".tgi[0].ni[11].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[11].y" 80;
+	setAttr ".tgi[0].ni[11].nvs" 1923;
+	setAttr ".tgi[0].ni[12].x" -267.38095092773438;
+	setAttr ".tgi[0].ni[12].y" 270.71429443359375;
+	setAttr ".tgi[0].ni[12].nvs" 1923;
+	setAttr ".tgi[0].ni[13].x" -618.5714111328125;
+	setAttr ".tgi[0].ni[13].y" 87.142860412597656;
+	setAttr ".tgi[0].ni[13].nvs" 1923;
+	setAttr ".tgi[0].ni[14].x" 12.857142448425293;
+	setAttr ".tgi[0].ni[14].y" 255.71427917480469;
+	setAttr ".tgi[0].ni[14].nvs" 1923;
+	setAttr ".tgi[0].ni[15].x" 12.857142448425293;
+	setAttr ".tgi[0].ni[15].y" 431.42855834960938;
+	setAttr ".tgi[0].ni[15].nvs" 1923;
+	setAttr ".tgi[0].ni[16].x" -310;
+	setAttr ".tgi[0].ni[16].y" 288.57144165039062;
+	setAttr ".tgi[0].ni[16].nvs" 1923;
+	setAttr ".tgi[0].ni[17].x" -617.14288330078125;
+	setAttr ".tgi[0].ni[17].y" 87.142860412597656;
+	setAttr ".tgi[0].ni[17].nvs" 1923;
+	setAttr ".tgi[0].ni[18].x" 12.857142448425293;
+	setAttr ".tgi[0].ni[18].y" 80;
+	setAttr ".tgi[0].ni[18].nvs" 1923;
+	setAttr ".tgi[0].ni[19].x" -310;
+	setAttr ".tgi[0].ni[19].y" -1.4285714626312256;
+	setAttr ".tgi[0].ni[19].nvs" 1923;
+	setAttr ".tgi[0].ni[20].x" 12.857142448425293;
+	setAttr ".tgi[0].ni[20].y" -248.57142639160156;
+	setAttr ".tgi[0].ni[20].nvs" 1923;
+	setAttr ".tgi[0].ni[21].x" 668.5714111328125;
+	setAttr ".tgi[0].ni[21].y" 344.28570556640625;
+	setAttr ".tgi[0].ni[21].nvs" 1923;
+	setAttr ".tgi[0].ni[22].x" 320;
+	setAttr ".tgi[0].ni[22].y" 234.28572082519531;
+	setAttr ".tgi[0].ni[22].nvs" 2387;
+	setAttr ".tgi[0].ni[23].x" 320;
+	setAttr ".tgi[0].ni[23].y" 410;
+	setAttr ".tgi[0].ni[23].nvs" 1923;
+	setAttr ".tgi[0].ni[24].x" 12.857142448425293;
+	setAttr ".tgi[0].ni[24].y" -95.714286804199219;
+	setAttr ".tgi[0].ni[24].nvs" 1923;
+	setAttr ".tgi[0].ni[25].x" 321.42855834960938;
+	setAttr ".tgi[0].ni[25].y" 410;
+	setAttr ".tgi[0].ni[25].nvs" 1923;
+	setAttr ".tgi[0].ni[26].x" 670;
+	setAttr ".tgi[0].ni[26].y" 344.28570556640625;
+	setAttr ".tgi[0].ni[26].nvs" 1923;
+	setAttr ".tgi[0].ni[27].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[27].y" -95.714286804199219;
+	setAttr ".tgi[0].ni[27].nvs" 1923;
+	setAttr ".tgi[0].ni[28].x" -312.85714721679688;
+	setAttr ".tgi[0].ni[28].y" -1.4285714626312256;
+	setAttr ".tgi[0].ni[28].nvs" 1923;
+	setAttr ".tgi[0].ni[29].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[29].y" 255.71427917480469;
+	setAttr ".tgi[0].ni[29].nvs" 1923;
+	setAttr ".tgi[0].ni[30].x" 321.42855834960938;
+	setAttr ".tgi[0].ni[30].y" 234.28572082519531;
+	setAttr ".tgi[0].ni[30].nvs" 2387;
+	setAttr ".tgi[0].ni[31].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[31].y" -248.57142639160156;
+	setAttr ".tgi[0].ni[31].nvs" 1923;
+	setAttr ".tgi[0].ni[32].x" 14.285714149475098;
+	setAttr ".tgi[0].ni[32].y" 255.71427917480469;
+	setAttr ".tgi[0].ni[32].nvs" 1923;
+	setAttr ".tgi[1].tn" -type "string" "Untitled_2";
+	setAttr ".tgi[1].vl" -type "double2" -516.09838829549005 -372.61903281249761 ;
+	setAttr ".tgi[1].vh" -type "double2" 933.24965701226608 416.03102715432323 ;
+	setAttr -s 2 ".tgi[1].ni";
+	setAttr ".tgi[1].ni[0].x" -114.28571319580078;
+	setAttr ".tgi[1].ni[0].y" 330;
+	setAttr ".tgi[1].ni[0].nvs" 2387;
+	setAttr ".tgi[1].ni[1].x" 295.71429443359375;
+	setAttr ".tgi[1].ni[1].y" 358.57144165039062;
+	setAttr ".tgi[1].ni[1].nvs" 2387;
 select -ne :time1;
-	setAttr ".o" 36;
-	setAttr ".unw" 36;
+	setAttr ".o" 51;
+	setAttr ".unw" 51;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".fprt" yes;
 select -ne :renderPartition;
-	setAttr -s 12 ".st";
+	setAttr -s 15 ".st";
 select -ne :renderGlobalsList1;
 select -ne :defaultShaderList1;
-	setAttr -s 13 ".s";
+	setAttr -s 19 ".s";
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderUtilityList1;
-	setAttr -s 21 ".u";
+	setAttr -s 30 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -s 6 ".r";
 select -ne :lightList1;
 select -ne :defaultTextureList1;
-	setAttr -s 25 ".tx";
+	setAttr -s 40 ".tx";
 select -ne :initialShadingGroup;
 select -ne :defaultRenderGlobals;
 	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
+	setAttr ".ren" -type "string" "arnold";
+	setAttr ".outf" 51;
+	setAttr ".imfkey" -type "string" "exr";
 	setAttr ".dss" -type "string" "lambert1";
+select -ne :defaultResolution;
+	setAttr ".pa" 1;
 select -ne :defaultLightSet;
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
@@ -1289,67 +1660,82 @@ select -ne :defaultColorMgtGlobals;
 	setAttr ".potn" -type "string" "sRGB gamma (legacy)";
 select -ne :defaultHideFaceDataSet;
 	setAttr -s 2 ".dnsm";
-connectAttr "Main_SceneRN.phl[51]" "lambert1SG.dsm" -na;
-connectAttr "Transform_Ctrl_translateX.o" "Main_SceneRN.phl[1]";
-connectAttr "Transform_Ctrl_translateY.o" "Main_SceneRN.phl[2]";
-connectAttr "Transform_Ctrl_translateZ.o" "Main_SceneRN.phl[3]";
-connectAttr "Transform_Ctrl_rotateX.o" "Main_SceneRN.phl[4]";
-connectAttr "Transform_Ctrl_rotateY.o" "Main_SceneRN.phl[5]";
-connectAttr "Transform_Ctrl_rotateZ.o" "Main_SceneRN.phl[6]";
-connectAttr "Transform_Ctrl_scaleX.o" "Main_SceneRN.phl[7]";
-connectAttr "Transform_Ctrl_scaleY.o" "Main_SceneRN.phl[8]";
-connectAttr "Transform_Ctrl_scaleZ.o" "Main_SceneRN.phl[9]";
-connectAttr "Transform_Ctrl_visibility.o" "Main_SceneRN.phl[10]";
-connectAttr "L_Eye_Jnt_01_Ctrl_translateX.o" "Main_SceneRN.phl[11]";
-connectAttr "L_Eye_Jnt_01_Ctrl_translateY.o" "Main_SceneRN.phl[12]";
-connectAttr "L_Eye_Jnt_01_Ctrl_translateZ.o" "Main_SceneRN.phl[13]";
-connectAttr "L_Eye_Jnt_01_Ctrl_rotateY.o" "Main_SceneRN.phl[14]";
-connectAttr "L_Eye_Jnt_01_Ctrl_rotateX.o" "Main_SceneRN.phl[15]";
-connectAttr "L_Eye_Jnt_01_Ctrl_rotateZ.o" "Main_SceneRN.phl[16]";
-connectAttr "L_Eye_Jnt_01_Ctrl_scaleX.o" "Main_SceneRN.phl[17]";
-connectAttr "L_Eye_Jnt_01_Ctrl_scaleY.o" "Main_SceneRN.phl[18]";
-connectAttr "L_Eye_Jnt_01_Ctrl_scaleZ.o" "Main_SceneRN.phl[19]";
-connectAttr "L_Eye_Jnt_01_Ctrl_visibility.o" "Main_SceneRN.phl[20]";
-connectAttr "R_Eye_Jnt_01_Ctrl_translateX.o" "Main_SceneRN.phl[21]";
-connectAttr "R_Eye_Jnt_01_Ctrl_translateY.o" "Main_SceneRN.phl[22]";
-connectAttr "R_Eye_Jnt_01_Ctrl_translateZ.o" "Main_SceneRN.phl[23]";
-connectAttr "R_Eye_Jnt_01_Ctrl_rotateY.o" "Main_SceneRN.phl[24]";
-connectAttr "R_Eye_Jnt_01_Ctrl_rotateX.o" "Main_SceneRN.phl[25]";
-connectAttr "R_Eye_Jnt_01_Ctrl_rotateZ.o" "Main_SceneRN.phl[26]";
-connectAttr "R_Eye_Jnt_01_Ctrl_scaleX.o" "Main_SceneRN.phl[27]";
-connectAttr "R_Eye_Jnt_01_Ctrl_scaleY.o" "Main_SceneRN.phl[28]";
-connectAttr "R_Eye_Jnt_01_Ctrl_scaleZ.o" "Main_SceneRN.phl[29]";
-connectAttr "R_Eye_Jnt_01_Ctrl_visibility.o" "Main_SceneRN.phl[30]";
-connectAttr "L_Claw_Jnt_Ctrl_translateX.o" "Main_SceneRN.phl[31]";
-connectAttr "L_Claw_Jnt_Ctrl_translateY.o" "Main_SceneRN.phl[32]";
-connectAttr "L_Claw_Jnt_Ctrl_translateZ.o" "Main_SceneRN.phl[33]";
-connectAttr "L_Claw_Jnt_Ctrl_rotateY.o" "Main_SceneRN.phl[34]";
-connectAttr "L_Claw_Jnt_Ctrl_rotateX.o" "Main_SceneRN.phl[35]";
-connectAttr "L_Claw_Jnt_Ctrl_rotateZ.o" "Main_SceneRN.phl[36]";
-connectAttr "L_Claw_Jnt_Ctrl_scaleX.o" "Main_SceneRN.phl[37]";
-connectAttr "L_Claw_Jnt_Ctrl_scaleY.o" "Main_SceneRN.phl[38]";
-connectAttr "L_Claw_Jnt_Ctrl_scaleZ.o" "Main_SceneRN.phl[39]";
-connectAttr "L_Claw_Jnt_Ctrl_visibility.o" "Main_SceneRN.phl[40]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_translateX.o" "Main_SceneRN.phl[41]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_translateY.o" "Main_SceneRN.phl[42]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_translateZ.o" "Main_SceneRN.phl[43]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_rotateZ.o" "Main_SceneRN.phl[44]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_rotateX.o" "Main_SceneRN.phl[45]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_rotateY.o" "Main_SceneRN.phl[46]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_scaleX.o" "Main_SceneRN.phl[47]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_scaleY.o" "Main_SceneRN.phl[48]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_scaleZ.o" "Main_SceneRN.phl[49]";
-connectAttr "L_Claw_Top_Jnt_01_Ctrl_visibility.o" "Main_SceneRN.phl[50]";
-connectAttr "Flag_translateX.o" "Main_SceneRN.phl[52]";
-connectAttr "Flag_translateZ.o" "Main_SceneRN.phl[53]";
-connectAttr "Flag_translateY.o" "Main_SceneRN.phl[54]";
-connectAttr "Flag_rotateX.o" "Main_SceneRN.phl[55]";
-connectAttr "Flag_rotateY.o" "Main_SceneRN.phl[56]";
-connectAttr "Flag_rotateZ.o" "Main_SceneRN.phl[57]";
-connectAttr "Flag_scaleX.o" "Main_SceneRN.phl[58]";
-connectAttr "Flag_scaleY.o" "Main_SceneRN.phl[59]";
-connectAttr "Flag_scaleZ.o" "Main_SceneRN.phl[60]";
-connectAttr "Flag_visibility.o" "Main_SceneRN.phl[61]";
+connectAttr "Main_SceneRN.phl[65]" "lambert1SG.dsm" -na;
+connectAttr "Main_SceneRN.phl[1]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[2]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[3]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[4]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[5]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[6]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[7]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[8]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[9]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[10]" "set2.dsm" -na;
+connectAttr "Main_SceneRN.phl[11]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[12]" "set1.dsm" -na;
+connectAttr "Main_SceneRN.phl[13]" "set2.dsm" -na;
+connectAttr "Transform_Ctrl_translateX.o" "Main_SceneRN.phl[14]";
+connectAttr "Transform_Ctrl_translateY.o" "Main_SceneRN.phl[15]";
+connectAttr "Transform_Ctrl_translateZ.o" "Main_SceneRN.phl[16]";
+connectAttr "Transform_Ctrl_rotateX.o" "Main_SceneRN.phl[17]";
+connectAttr "Transform_Ctrl_rotateY.o" "Main_SceneRN.phl[18]";
+connectAttr "Transform_Ctrl_rotateZ.o" "Main_SceneRN.phl[19]";
+connectAttr "Transform_Ctrl_scaleX.o" "Main_SceneRN.phl[20]";
+connectAttr "Transform_Ctrl_scaleY.o" "Main_SceneRN.phl[21]";
+connectAttr "Transform_Ctrl_scaleZ.o" "Main_SceneRN.phl[22]";
+connectAttr "Transform_Ctrl_visibility.o" "Main_SceneRN.phl[23]";
+connectAttr "L_Eye_Jnt_01_Ctrl_translateX.o" "Main_SceneRN.phl[24]";
+connectAttr "L_Eye_Jnt_01_Ctrl_translateY.o" "Main_SceneRN.phl[25]";
+connectAttr "L_Eye_Jnt_01_Ctrl_translateZ.o" "Main_SceneRN.phl[26]";
+connectAttr "L_Eye_Jnt_01_Ctrl_rotateY.o" "Main_SceneRN.phl[27]";
+connectAttr "L_Eye_Jnt_01_Ctrl_rotateX.o" "Main_SceneRN.phl[28]";
+connectAttr "L_Eye_Jnt_01_Ctrl_rotateZ.o" "Main_SceneRN.phl[29]";
+connectAttr "L_Eye_Jnt_01_Ctrl_scaleX.o" "Main_SceneRN.phl[30]";
+connectAttr "L_Eye_Jnt_01_Ctrl_scaleY.o" "Main_SceneRN.phl[31]";
+connectAttr "L_Eye_Jnt_01_Ctrl_scaleZ.o" "Main_SceneRN.phl[32]";
+connectAttr "L_Eye_Jnt_01_Ctrl_visibility.o" "Main_SceneRN.phl[33]";
+connectAttr "R_Eye_Jnt_01_Ctrl_translateX.o" "Main_SceneRN.phl[34]";
+connectAttr "R_Eye_Jnt_01_Ctrl_translateY.o" "Main_SceneRN.phl[35]";
+connectAttr "R_Eye_Jnt_01_Ctrl_translateZ.o" "Main_SceneRN.phl[36]";
+connectAttr "R_Eye_Jnt_01_Ctrl_rotateY.o" "Main_SceneRN.phl[37]";
+connectAttr "R_Eye_Jnt_01_Ctrl_rotateX.o" "Main_SceneRN.phl[38]";
+connectAttr "R_Eye_Jnt_01_Ctrl_rotateZ.o" "Main_SceneRN.phl[39]";
+connectAttr "R_Eye_Jnt_01_Ctrl_scaleX.o" "Main_SceneRN.phl[40]";
+connectAttr "R_Eye_Jnt_01_Ctrl_scaleY.o" "Main_SceneRN.phl[41]";
+connectAttr "R_Eye_Jnt_01_Ctrl_scaleZ.o" "Main_SceneRN.phl[42]";
+connectAttr "R_Eye_Jnt_01_Ctrl_visibility.o" "Main_SceneRN.phl[43]";
+connectAttr "L_Claw_Jnt_Ctrl_translateX.o" "Main_SceneRN.phl[44]";
+connectAttr "L_Claw_Jnt_Ctrl_translateY.o" "Main_SceneRN.phl[45]";
+connectAttr "L_Claw_Jnt_Ctrl_translateZ.o" "Main_SceneRN.phl[46]";
+connectAttr "L_Claw_Jnt_Ctrl_rotateY.o" "Main_SceneRN.phl[47]";
+connectAttr "L_Claw_Jnt_Ctrl_rotateX.o" "Main_SceneRN.phl[48]";
+connectAttr "L_Claw_Jnt_Ctrl_rotateZ.o" "Main_SceneRN.phl[49]";
+connectAttr "L_Claw_Jnt_Ctrl_scaleX.o" "Main_SceneRN.phl[50]";
+connectAttr "L_Claw_Jnt_Ctrl_scaleY.o" "Main_SceneRN.phl[51]";
+connectAttr "L_Claw_Jnt_Ctrl_scaleZ.o" "Main_SceneRN.phl[52]";
+connectAttr "L_Claw_Jnt_Ctrl_visibility.o" "Main_SceneRN.phl[53]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_translateX.o" "Main_SceneRN.phl[54]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_translateY.o" "Main_SceneRN.phl[55]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_translateZ.o" "Main_SceneRN.phl[56]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_rotateZ.o" "Main_SceneRN.phl[57]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_rotateX.o" "Main_SceneRN.phl[58]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_rotateY.o" "Main_SceneRN.phl[59]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_scaleX.o" "Main_SceneRN.phl[60]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_scaleY.o" "Main_SceneRN.phl[61]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_scaleZ.o" "Main_SceneRN.phl[62]";
+connectAttr "L_Claw_Top_Jnt_01_Ctrl_visibility.o" "Main_SceneRN.phl[63]";
+connectAttr "Main_SceneRN.phl[64]" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[1].ni[1].dn"
+		;
+connectAttr "Flag_translateX.o" "Main_SceneRN.phl[66]";
+connectAttr "Flag_translateZ.o" "Main_SceneRN.phl[67]";
+connectAttr "Flag_translateY.o" "Main_SceneRN.phl[68]";
+connectAttr "Flag_rotateX.o" "Main_SceneRN.phl[69]";
+connectAttr "Flag_rotateY.o" "Main_SceneRN.phl[70]";
+connectAttr "Flag_rotateZ.o" "Main_SceneRN.phl[71]";
+connectAttr "Flag_scaleX.o" "Main_SceneRN.phl[72]";
+connectAttr "Flag_scaleY.o" "Main_SceneRN.phl[73]";
+connectAttr "Flag_scaleZ.o" "Main_SceneRN.phl[74]";
+connectAttr "Flag_visibility.o" "Main_SceneRN.phl[75]";
 connectAttr "pCube1_translateX.o" "WAVE.tx";
 connectAttr "pCube1_translateY.o" "WAVE.ty";
 connectAttr "pCube1_translateZ.o" "WAVE.tz";
@@ -1366,11 +1752,17 @@ relationship "link" ":rocks:lightLinker1" "lambert1SG.message" ":defaultLightSet
 relationship "link" ":rocks:lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":rocks:lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":rocks:lightLinker1" "lambert3SG.message" ":defaultLightSet.message";
+relationship "link" ":rocks:lightLinker1" "set1.message" ":defaultLightSet.message";
+relationship "link" ":rocks:lightLinker1" "set2.message" ":defaultLightSet.message";
+relationship "link" ":rocks:lightLinker1" "set3.message" ":defaultLightSet.message";
 relationship "shadowLink" ":rocks:lightLinker1" "rocks:set1.message" ":defaultLightSet.message";
 relationship "shadowLink" ":rocks:lightLinker1" "lambert1SG.message" ":defaultLightSet.message";
 relationship "shadowLink" ":rocks:lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "shadowLink" ":rocks:lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":rocks:lightLinker1" "lambert3SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":rocks:lightLinker1" "set1.message" ":defaultLightSet.message";
+relationship "shadowLink" ":rocks:lightLinker1" "set2.message" ":defaultLightSet.message";
+relationship "shadowLink" ":rocks:lightLinker1" "set3.message" ":defaultLightSet.message";
 connectAttr "rocks:defaultRedshiftPostEffects.msg" ":rocks:redshiftOptions.postEffects"
 		;
 connectAttr "rocks:layerManager.dli[0]" "rocks:defaultLayer.id";
@@ -1511,6 +1903,473 @@ connectAttr "lambert3.oc" "lambert3SG.ss";
 connectAttr "WAVEShape.iog" "lambert3SG.dsm" -na;
 connectAttr "lambert3SG.msg" "materialInfo2.sg";
 connectAttr "lambert3.msg" "materialInfo2.m";
+connectAttr ":defaultColorMgtGlobals.cme" "file1.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file1.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file1.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file1.ws";
+connectAttr "place2dTexture1.o" "file1.uv";
+connectAttr "place2dTexture1.ofs" "file1.fs";
+connectAttr "place2dTexture1.c" "file1.c";
+connectAttr "place2dTexture1.tf" "file1.tf";
+connectAttr "place2dTexture1.rf" "file1.rf";
+connectAttr "place2dTexture1.mu" "file1.mu";
+connectAttr "place2dTexture1.mv" "file1.mv";
+connectAttr "place2dTexture1.s" "file1.s";
+connectAttr "place2dTexture1.wu" "file1.wu";
+connectAttr "place2dTexture1.wv" "file1.wv";
+connectAttr "place2dTexture1.re" "file1.re";
+connectAttr "place2dTexture1.of" "file1.of";
+connectAttr "place2dTexture1.r" "file1.ro";
+connectAttr "place2dTexture1.n" "file1.n";
+connectAttr "place2dTexture1.vt1" "file1.vt1";
+connectAttr "place2dTexture1.vt2" "file1.vt2";
+connectAttr "place2dTexture1.vt3" "file1.vt3";
+connectAttr "place2dTexture1.vc1" "file1.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file2.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file2.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file2.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file2.ws";
+connectAttr "place2dTexture1.o" "file2.uv";
+connectAttr "place2dTexture1.ofs" "file2.fs";
+connectAttr "place2dTexture1.c" "file2.c";
+connectAttr "place2dTexture1.tf" "file2.tf";
+connectAttr "place2dTexture1.rf" "file2.rf";
+connectAttr "place2dTexture1.mu" "file2.mu";
+connectAttr "place2dTexture1.mv" "file2.mv";
+connectAttr "place2dTexture1.s" "file2.s";
+connectAttr "place2dTexture1.wu" "file2.wu";
+connectAttr "place2dTexture1.wv" "file2.wv";
+connectAttr "place2dTexture1.re" "file2.re";
+connectAttr "place2dTexture1.of" "file2.of";
+connectAttr "place2dTexture1.r" "file2.ro";
+connectAttr "place2dTexture1.n" "file2.n";
+connectAttr "place2dTexture1.vt1" "file2.vt1";
+connectAttr "place2dTexture1.vt2" "file2.vt2";
+connectAttr "place2dTexture1.vt3" "file2.vt3";
+connectAttr "place2dTexture1.vc1" "file2.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file3.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file3.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file3.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file3.ws";
+connectAttr "place2dTexture1.o" "file3.uv";
+connectAttr "place2dTexture1.ofs" "file3.fs";
+connectAttr "place2dTexture1.c" "file3.c";
+connectAttr "place2dTexture1.tf" "file3.tf";
+connectAttr "place2dTexture1.rf" "file3.rf";
+connectAttr "place2dTexture1.mu" "file3.mu";
+connectAttr "place2dTexture1.mv" "file3.mv";
+connectAttr "place2dTexture1.s" "file3.s";
+connectAttr "place2dTexture1.wu" "file3.wu";
+connectAttr "place2dTexture1.wv" "file3.wv";
+connectAttr "place2dTexture1.re" "file3.re";
+connectAttr "place2dTexture1.of" "file3.of";
+connectAttr "place2dTexture1.r" "file3.ro";
+connectAttr "place2dTexture1.n" "file3.n";
+connectAttr "place2dTexture1.vt1" "file3.vt1";
+connectAttr "place2dTexture1.vt2" "file3.vt2";
+connectAttr "place2dTexture1.vt3" "file3.vt3";
+connectAttr "place2dTexture1.vc1" "file3.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file4.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file4.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file4.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file4.ws";
+connectAttr "place2dTexture1.o" "file4.uv";
+connectAttr "place2dTexture1.ofs" "file4.fs";
+connectAttr "place2dTexture1.c" "file4.c";
+connectAttr "place2dTexture1.tf" "file4.tf";
+connectAttr "place2dTexture1.rf" "file4.rf";
+connectAttr "place2dTexture1.mu" "file4.mu";
+connectAttr "place2dTexture1.mv" "file4.mv";
+connectAttr "place2dTexture1.s" "file4.s";
+connectAttr "place2dTexture1.wu" "file4.wu";
+connectAttr "place2dTexture1.wv" "file4.wv";
+connectAttr "place2dTexture1.re" "file4.re";
+connectAttr "place2dTexture1.of" "file4.of";
+connectAttr "place2dTexture1.r" "file4.ro";
+connectAttr "place2dTexture1.n" "file4.n";
+connectAttr "place2dTexture1.vt1" "file4.vt1";
+connectAttr "place2dTexture1.vt2" "file4.vt2";
+connectAttr "place2dTexture1.vt3" "file4.vt3";
+connectAttr "place2dTexture1.vc1" "file4.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file5.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file5.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file5.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file5.ws";
+connectAttr "place2dTexture1.o" "file5.uv";
+connectAttr "place2dTexture1.ofs" "file5.fs";
+connectAttr "place2dTexture1.c" "file5.c";
+connectAttr "place2dTexture1.tf" "file5.tf";
+connectAttr "place2dTexture1.rf" "file5.rf";
+connectAttr "place2dTexture1.mu" "file5.mu";
+connectAttr "place2dTexture1.mv" "file5.mv";
+connectAttr "place2dTexture1.s" "file5.s";
+connectAttr "place2dTexture1.wu" "file5.wu";
+connectAttr "place2dTexture1.wv" "file5.wv";
+connectAttr "place2dTexture1.re" "file5.re";
+connectAttr "place2dTexture1.of" "file5.of";
+connectAttr "place2dTexture1.r" "file5.ro";
+connectAttr "place2dTexture1.n" "file5.n";
+connectAttr "place2dTexture1.vt1" "file5.vt1";
+connectAttr "place2dTexture1.vt2" "file5.vt2";
+connectAttr "place2dTexture1.vt3" "file5.vt3";
+connectAttr "place2dTexture1.vc1" "file5.vc1";
+connectAttr "file1.oc" "multiplyDivide1.i1";
+connectAttr "multiplyDivide1.o" "aiStandardSurface1.base_color";
+connectAttr "file3.oa" "aiStandardSurface1.metalness";
+connectAttr "bump2d1.o" "aiStandardSurface1.n";
+connectAttr "file5.oa" "aiStandardSurface1.specular_roughness";
+connectAttr "aiStandardSurface1.out" "set1.ss";
+connectAttr "displacementShader1.d" "set1.ds";
+connectAttr "set1.msg" "materialInfo3.sg";
+connectAttr "aiStandardSurface1.msg" "materialInfo3.m";
+connectAttr "aiStandardSurface1.msg" "materialInfo3.t" -na;
+connectAttr "file2.oa" "displacementShader1.d";
+connectAttr "file4.oa" "bump2d1.bv";
+connectAttr ":defaultColorMgtGlobals.cme" "file6.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file6.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file6.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file6.ws";
+connectAttr "place2dTexture2.o" "file6.uv";
+connectAttr "place2dTexture2.ofs" "file6.fs";
+connectAttr "place2dTexture2.c" "file6.c";
+connectAttr "place2dTexture2.tf" "file6.tf";
+connectAttr "place2dTexture2.rf" "file6.rf";
+connectAttr "place2dTexture2.mu" "file6.mu";
+connectAttr "place2dTexture2.mv" "file6.mv";
+connectAttr "place2dTexture2.s" "file6.s";
+connectAttr "place2dTexture2.wu" "file6.wu";
+connectAttr "place2dTexture2.wv" "file6.wv";
+connectAttr "place2dTexture2.re" "file6.re";
+connectAttr "place2dTexture2.of" "file6.of";
+connectAttr "place2dTexture2.r" "file6.ro";
+connectAttr "place2dTexture2.n" "file6.n";
+connectAttr "place2dTexture2.vt1" "file6.vt1";
+connectAttr "place2dTexture2.vt2" "file6.vt2";
+connectAttr "place2dTexture2.vt3" "file6.vt3";
+connectAttr "place2dTexture2.vc1" "file6.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file7.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file7.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file7.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file7.ws";
+connectAttr "place2dTexture2.o" "file7.uv";
+connectAttr "place2dTexture2.ofs" "file7.fs";
+connectAttr "place2dTexture2.c" "file7.c";
+connectAttr "place2dTexture2.tf" "file7.tf";
+connectAttr "place2dTexture2.rf" "file7.rf";
+connectAttr "place2dTexture2.mu" "file7.mu";
+connectAttr "place2dTexture2.mv" "file7.mv";
+connectAttr "place2dTexture2.s" "file7.s";
+connectAttr "place2dTexture2.wu" "file7.wu";
+connectAttr "place2dTexture2.wv" "file7.wv";
+connectAttr "place2dTexture2.re" "file7.re";
+connectAttr "place2dTexture2.of" "file7.of";
+connectAttr "place2dTexture2.r" "file7.ro";
+connectAttr "place2dTexture2.n" "file7.n";
+connectAttr "place2dTexture2.vt1" "file7.vt1";
+connectAttr "place2dTexture2.vt2" "file7.vt2";
+connectAttr "place2dTexture2.vt3" "file7.vt3";
+connectAttr "place2dTexture2.vc1" "file7.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file8.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file8.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file8.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file8.ws";
+connectAttr "place2dTexture2.o" "file8.uv";
+connectAttr "place2dTexture2.ofs" "file8.fs";
+connectAttr "place2dTexture2.c" "file8.c";
+connectAttr "place2dTexture2.tf" "file8.tf";
+connectAttr "place2dTexture2.rf" "file8.rf";
+connectAttr "place2dTexture2.mu" "file8.mu";
+connectAttr "place2dTexture2.mv" "file8.mv";
+connectAttr "place2dTexture2.s" "file8.s";
+connectAttr "place2dTexture2.wu" "file8.wu";
+connectAttr "place2dTexture2.wv" "file8.wv";
+connectAttr "place2dTexture2.re" "file8.re";
+connectAttr "place2dTexture2.of" "file8.of";
+connectAttr "place2dTexture2.r" "file8.ro";
+connectAttr "place2dTexture2.n" "file8.n";
+connectAttr "place2dTexture2.vt1" "file8.vt1";
+connectAttr "place2dTexture2.vt2" "file8.vt2";
+connectAttr "place2dTexture2.vt3" "file8.vt3";
+connectAttr "place2dTexture2.vc1" "file8.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file9.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file9.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file9.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file9.ws";
+connectAttr "place2dTexture2.o" "file9.uv";
+connectAttr "place2dTexture2.ofs" "file9.fs";
+connectAttr "place2dTexture2.c" "file9.c";
+connectAttr "place2dTexture2.tf" "file9.tf";
+connectAttr "place2dTexture2.rf" "file9.rf";
+connectAttr "place2dTexture2.mu" "file9.mu";
+connectAttr "place2dTexture2.mv" "file9.mv";
+connectAttr "place2dTexture2.s" "file9.s";
+connectAttr "place2dTexture2.wu" "file9.wu";
+connectAttr "place2dTexture2.wv" "file9.wv";
+connectAttr "place2dTexture2.re" "file9.re";
+connectAttr "place2dTexture2.of" "file9.of";
+connectAttr "place2dTexture2.r" "file9.ro";
+connectAttr "place2dTexture2.n" "file9.n";
+connectAttr "place2dTexture2.vt1" "file9.vt1";
+connectAttr "place2dTexture2.vt2" "file9.vt2";
+connectAttr "place2dTexture2.vt3" "file9.vt3";
+connectAttr "place2dTexture2.vc1" "file9.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file10.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file10.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file10.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file10.ws";
+connectAttr "place2dTexture2.o" "file10.uv";
+connectAttr "place2dTexture2.ofs" "file10.fs";
+connectAttr "place2dTexture2.c" "file10.c";
+connectAttr "place2dTexture2.tf" "file10.tf";
+connectAttr "place2dTexture2.rf" "file10.rf";
+connectAttr "place2dTexture2.mu" "file10.mu";
+connectAttr "place2dTexture2.mv" "file10.mv";
+connectAttr "place2dTexture2.s" "file10.s";
+connectAttr "place2dTexture2.wu" "file10.wu";
+connectAttr "place2dTexture2.wv" "file10.wv";
+connectAttr "place2dTexture2.re" "file10.re";
+connectAttr "place2dTexture2.of" "file10.of";
+connectAttr "place2dTexture2.r" "file10.ro";
+connectAttr "place2dTexture2.n" "file10.n";
+connectAttr "place2dTexture2.vt1" "file10.vt1";
+connectAttr "place2dTexture2.vt2" "file10.vt2";
+connectAttr "place2dTexture2.vt3" "file10.vt3";
+connectAttr "place2dTexture2.vc1" "file10.vc1";
+connectAttr "file6.oc" "multiplyDivide2.i1";
+connectAttr "multiplyDivide2.o" "aiStandardSurface2.base_color";
+connectAttr "file8.oa" "aiStandardSurface2.metalness";
+connectAttr "bump2d2.o" "aiStandardSurface2.n";
+connectAttr "file10.oa" "aiStandardSurface2.specular_roughness";
+connectAttr "aiStandardSurface2.out" "set2.ss";
+connectAttr "displacementShader2.d" "set2.ds";
+connectAttr "set2.msg" "materialInfo4.sg";
+connectAttr "aiStandardSurface2.msg" "materialInfo4.m";
+connectAttr "aiStandardSurface2.msg" "materialInfo4.t" -na;
+connectAttr "file7.oa" "displacementShader2.d";
+connectAttr "file9.oa" "bump2d2.bv";
+connectAttr ":defaultColorMgtGlobals.cme" "file11.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file11.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file11.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file11.ws";
+connectAttr "place2dTexture3.o" "file11.uv";
+connectAttr "place2dTexture3.ofs" "file11.fs";
+connectAttr "place2dTexture3.c" "file11.c";
+connectAttr "place2dTexture3.tf" "file11.tf";
+connectAttr "place2dTexture3.rf" "file11.rf";
+connectAttr "place2dTexture3.mu" "file11.mu";
+connectAttr "place2dTexture3.mv" "file11.mv";
+connectAttr "place2dTexture3.s" "file11.s";
+connectAttr "place2dTexture3.wu" "file11.wu";
+connectAttr "place2dTexture3.wv" "file11.wv";
+connectAttr "place2dTexture3.re" "file11.re";
+connectAttr "place2dTexture3.of" "file11.of";
+connectAttr "place2dTexture3.r" "file11.ro";
+connectAttr "place2dTexture3.n" "file11.n";
+connectAttr "place2dTexture3.vt1" "file11.vt1";
+connectAttr "place2dTexture3.vt2" "file11.vt2";
+connectAttr "place2dTexture3.vt3" "file11.vt3";
+connectAttr "place2dTexture3.vc1" "file11.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file12.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file12.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file12.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file12.ws";
+connectAttr "place2dTexture3.o" "file12.uv";
+connectAttr "place2dTexture3.ofs" "file12.fs";
+connectAttr "place2dTexture3.c" "file12.c";
+connectAttr "place2dTexture3.tf" "file12.tf";
+connectAttr "place2dTexture3.rf" "file12.rf";
+connectAttr "place2dTexture3.mu" "file12.mu";
+connectAttr "place2dTexture3.mv" "file12.mv";
+connectAttr "place2dTexture3.s" "file12.s";
+connectAttr "place2dTexture3.wu" "file12.wu";
+connectAttr "place2dTexture3.wv" "file12.wv";
+connectAttr "place2dTexture3.re" "file12.re";
+connectAttr "place2dTexture3.of" "file12.of";
+connectAttr "place2dTexture3.r" "file12.ro";
+connectAttr "place2dTexture3.n" "file12.n";
+connectAttr "place2dTexture3.vt1" "file12.vt1";
+connectAttr "place2dTexture3.vt2" "file12.vt2";
+connectAttr "place2dTexture3.vt3" "file12.vt3";
+connectAttr "place2dTexture3.vc1" "file12.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file13.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file13.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file13.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file13.ws";
+connectAttr "place2dTexture3.o" "file13.uv";
+connectAttr "place2dTexture3.ofs" "file13.fs";
+connectAttr "place2dTexture3.c" "file13.c";
+connectAttr "place2dTexture3.tf" "file13.tf";
+connectAttr "place2dTexture3.rf" "file13.rf";
+connectAttr "place2dTexture3.mu" "file13.mu";
+connectAttr "place2dTexture3.mv" "file13.mv";
+connectAttr "place2dTexture3.s" "file13.s";
+connectAttr "place2dTexture3.wu" "file13.wu";
+connectAttr "place2dTexture3.wv" "file13.wv";
+connectAttr "place2dTexture3.re" "file13.re";
+connectAttr "place2dTexture3.of" "file13.of";
+connectAttr "place2dTexture3.r" "file13.ro";
+connectAttr "place2dTexture3.n" "file13.n";
+connectAttr "place2dTexture3.vt1" "file13.vt1";
+connectAttr "place2dTexture3.vt2" "file13.vt2";
+connectAttr "place2dTexture3.vt3" "file13.vt3";
+connectAttr "place2dTexture3.vc1" "file13.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file14.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file14.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file14.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file14.ws";
+connectAttr "place2dTexture3.o" "file14.uv";
+connectAttr "place2dTexture3.ofs" "file14.fs";
+connectAttr "place2dTexture3.c" "file14.c";
+connectAttr "place2dTexture3.tf" "file14.tf";
+connectAttr "place2dTexture3.rf" "file14.rf";
+connectAttr "place2dTexture3.mu" "file14.mu";
+connectAttr "place2dTexture3.mv" "file14.mv";
+connectAttr "place2dTexture3.s" "file14.s";
+connectAttr "place2dTexture3.wu" "file14.wu";
+connectAttr "place2dTexture3.wv" "file14.wv";
+connectAttr "place2dTexture3.re" "file14.re";
+connectAttr "place2dTexture3.of" "file14.of";
+connectAttr "place2dTexture3.r" "file14.ro";
+connectAttr "place2dTexture3.n" "file14.n";
+connectAttr "place2dTexture3.vt1" "file14.vt1";
+connectAttr "place2dTexture3.vt2" "file14.vt2";
+connectAttr "place2dTexture3.vt3" "file14.vt3";
+connectAttr "place2dTexture3.vc1" "file14.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file15.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file15.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file15.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file15.ws";
+connectAttr "place2dTexture3.o" "file15.uv";
+connectAttr "place2dTexture3.ofs" "file15.fs";
+connectAttr "place2dTexture3.c" "file15.c";
+connectAttr "place2dTexture3.tf" "file15.tf";
+connectAttr "place2dTexture3.rf" "file15.rf";
+connectAttr "place2dTexture3.mu" "file15.mu";
+connectAttr "place2dTexture3.mv" "file15.mv";
+connectAttr "place2dTexture3.s" "file15.s";
+connectAttr "place2dTexture3.wu" "file15.wu";
+connectAttr "place2dTexture3.wv" "file15.wv";
+connectAttr "place2dTexture3.re" "file15.re";
+connectAttr "place2dTexture3.of" "file15.of";
+connectAttr "place2dTexture3.r" "file15.ro";
+connectAttr "place2dTexture3.n" "file15.n";
+connectAttr "place2dTexture3.vt1" "file15.vt1";
+connectAttr "place2dTexture3.vt2" "file15.vt2";
+connectAttr "place2dTexture3.vt3" "file15.vt3";
+connectAttr "place2dTexture3.vc1" "file15.vc1";
+connectAttr "file11.oc" "multiplyDivide3.i1";
+connectAttr "multiplyDivide3.o" "aiStandardSurface3.base_color";
+connectAttr "file13.oa" "aiStandardSurface3.metalness";
+connectAttr "bump2d3.o" "aiStandardSurface3.n";
+connectAttr "file15.oa" "aiStandardSurface3.specular_roughness";
+connectAttr "aiStandardSurface3.out" "set3.ss";
+connectAttr "displacementShader3.d" "set3.ds";
+connectAttr "set3.msg" "materialInfo5.sg";
+connectAttr "aiStandardSurface3.msg" "materialInfo5.m";
+connectAttr "aiStandardSurface3.msg" "materialInfo5.t" -na;
+connectAttr "file12.oa" "displacementShader3.d";
+connectAttr "file14.oa" "bump2d3.bv";
+connectAttr "place2dTexture1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+		;
+connectAttr "file1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+		;
+connectAttr "file2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+		;
+connectAttr "file3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+		;
+connectAttr "set3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+		;
+connectAttr "aiStandardSurface3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+		;
+connectAttr "displacementShader3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+		;
+connectAttr "bump2d3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+		;
+connectAttr "file14.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+		;
+connectAttr "file15.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+		;
+connectAttr "file12.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+		;
+connectAttr "file13.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
+		;
+connectAttr "file11.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+		;
+connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
+		;
+connectAttr "multiplyDivide2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[14].dn"
+		;
+connectAttr "file7.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[15].dn"
+		;
+connectAttr "file6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[16].dn"
+		;
+connectAttr "place2dTexture2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[17].dn"
+		;
+connectAttr "file8.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[18].dn"
+		;
+connectAttr "file9.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[19].dn"
+		;
+connectAttr "file10.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[20].dn"
+		;
+connectAttr "set2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[21].dn"
+		;
+connectAttr "aiStandardSurface2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[22].dn"
+		;
+connectAttr "displacementShader2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[23].dn"
+		;
+connectAttr "bump2d2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[24].dn"
+		;
+connectAttr "displacementShader1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[25].dn"
+		;
+connectAttr "set1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[26].dn"
+		;
+connectAttr "bump2d1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[27].dn"
+		;
+connectAttr "file4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[28].dn"
+		;
+connectAttr "multiplyDivide1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[29].dn"
+		;
+connectAttr "aiStandardSurface1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[30].dn"
+		;
+connectAttr "file5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[31].dn"
+		;
+connectAttr "multiplyDivide3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[32].dn"
+		;
+connectAttr "aiStandardSurface1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[1].ni[0].dn"
+		;
 connectAttr "lambert3SG.pa" ":renderPartition.st" -na;
+connectAttr "set1.pa" ":renderPartition.st" -na;
+connectAttr "set2.pa" ":renderPartition.st" -na;
+connectAttr "set3.pa" ":renderPartition.st" -na;
 connectAttr "lambert3.msg" ":defaultShaderList1.s" -na;
+connectAttr "aiStandardSurface1.msg" ":defaultShaderList1.s" -na;
+connectAttr "displacementShader1.msg" ":defaultShaderList1.s" -na;
+connectAttr "aiStandardSurface2.msg" ":defaultShaderList1.s" -na;
+connectAttr "displacementShader2.msg" ":defaultShaderList1.s" -na;
+connectAttr "aiStandardSurface3.msg" ":defaultShaderList1.s" -na;
+connectAttr "displacementShader3.msg" ":defaultShaderList1.s" -na;
+connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "multiplyDivide1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "multiplyDivide2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "multiplyDivide3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "file1.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file2.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file3.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file4.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file5.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file6.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file7.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file8.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file9.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file10.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file11.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file12.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file13.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file14.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file15.msg" ":defaultTextureList1.tx" -na;
 // End of Anim_1.ma
