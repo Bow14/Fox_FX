@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Scene_1.ma
-//Last modified: Wed, Nov 06, 2024 11:32:39 AM
+//Last modified: Wed, Nov 06, 2024 11:49:10 AM
 //Codeset: 1252
 file -rdi 1 -ns "Hermit_Crab_Rig_New" -rfn "Hermit_Crab_Rig_NewRN" -op "v=0;"
 		 -typ "mayaAscii" "C:/Users/Melia/Gitrepo/Fox_FX/Maya_Scenes//Models/HermitCrab/Hermit_Crab_Ven_Rig.ma";
@@ -27,19 +27,19 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202211021031-847a9f9623";
 fileInfo "osv" "Windows 10 Home v2009 (Build: 19045)";
-fileInfo "UUID" "180F913B-4326-FF6F-5A46-3999F763C0C9";
+fileInfo "UUID" "D9E1D13D-4984-7E1A-EAE7-1489D66434A3";
 createNode transform -s -n "persp";
 	rename -uid "06D20F71-4E11-86F7-2107-AAB30961FAE9";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 45.70246263463639 17.47182492201615 17.173996887450109 ;
-	setAttr ".r" -type "double3" -36.599999999961284 -132.39999999998582 0 ;
+	setAttr ".t" -type "double3" 62.459751102454462 5.8708234116065938 48.630011752188402 ;
+	setAttr ".r" -type "double3" 4.7999999999932932 -342.40000000001675 2.0854659440983068e-16 ;
 	setAttr ".rpt" -type "double3" -2.6382085024940071e-14 -3.6677993347191432e-14 3.6587019915827511e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "41EBD044-41EE-7229-94E9-8095322B51BB";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 16.097156344057353;
+	setAttr ".coi" 23.942735640620068;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -201,7 +201,7 @@ createNode aiSkyDomeLight -n "aiSkyDomeLightShape1" -p "aiSkyDomeLight1";
 	setAttr ".ai_color_temperature" 7760.27392578125;
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure"} ;
 createNode fosterParent -n "Hermit_Crab_Rig_NewRNfosterParent1";
-	rename -uid "FD755E4B-48DC-B098-C2AD-649F7CF99101";
+	rename -uid "0AF89AEF-493C-BB28-FAEB-EE9AA29C9C41";
 createNode nurbsCurve -n "Transform_CtrlShapeDeformed" -p "Hermit_Crab_Rig_NewRNfosterParent1";
 	rename -uid "95B059B5-499A-87DD-D7A7-B8BD0D341601";
 	setAttr -k off ".v";
@@ -358,10 +358,10 @@ createNode reference -n "Hermit_Crab_Rig_NewRN";
 		2 "|Hermit_Crab_Asset|Hermit_Crab_Rig_New:Hermit_Crab|Hermit_Crab_Rig_New:Geo|Hermit_Crab_Rig_New:HermitCrab|Hermit_Crab_Rig_New:Crab_Body|Hermit_Crab_Rig_New:Crab_BodyShape" 
 		"instObjGroups.objectGroups" " -s 4"
 		2 "|Hermit_Crab_Asset|Hermit_Crab_Rig_New:Hermit_Crab|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
-		"translate" " -type \"double3\" 55.84868622669912952 4.76988415627496121 25.97588752156629255"
+		"translate" " -type \"double3\" 55.8486862266991082 3.46364284010447054 25.97588752156627834"
 		
 		2 "|Hermit_Crab_Asset|Hermit_Crab_Rig_New:Hermit_Crab|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
-		"rotate" " -type \"double3\" -203.90053109353874561 -38.37555066634072887 178.15815813547246194"
+		"rotate" " -type \"double3\" -185.7536289828104259 -43.9155224559080537 150.90360893240716678"
 		
 		2 "|Hermit_Crab_Asset|Hermit_Crab_Rig_New:Hermit_Crab|Hermit_Crab_Rig_New:Controls|Hermit_Crab_Rig_New:Transform_Ctrl_Grp|Hermit_Crab_Rig_New:Transform_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
@@ -10955,7 +10955,7 @@ createNode bump2d -n "bump2d8";
 	setAttr ".bi" 1;
 	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "A9B56456-4243-CB2A-4F54-16863CC1A1F3";
+	rename -uid "6BC9063A-4168-9B23-F7FB-ACAC2392690C";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
 	setAttr ".tgi[0].vl" -type "double2" -12172.694428723526 -17461.92081137071 ;
 	setAttr ".tgi[0].vh" -type "double2" 32542.831372378758 14826.173143710945 ;
